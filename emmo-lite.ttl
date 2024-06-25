@@ -237,7 +237,8 @@
 
 ###  https://w3id.org/emmo/emmo-lite#hasDataValue
 :hasDataValue rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Data .
+              rdfs:domain :Data ;
+              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c> .
 
 
 #################################################################
@@ -252,7 +253,9 @@
 
 ###  https://w3id.org/emmo/emmo-lite#ArrayData
 :ArrayData rdf:type owl:Class ;
-           rdfs:subClassOf :SymbolicData .
+           rdfs:subClassOf :SymbolicData ;
+           owl:disjointWith :ScalarData ;
+           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_9e49caad_b29e_4cf1_9be4_80419fd1e45c> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Behaviour
@@ -264,7 +267,8 @@
 
 ###  https://w3id.org/emmo/emmo-lite#BooleanData
 :BooleanData rdf:type owl:Class ;
-             rdfs:subClassOf :SymbolicData .
+             rdfs:subClassOf :SymbolicData ;
+             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_54dc83cb_06e1_4739_9e45_bc09cead7f48> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Component
@@ -310,12 +314,37 @@
 
 ###  https://w3id.org/emmo/emmo-lite#DateTimeData
 :DateTimeData rdf:type owl:Class ;
-              rdfs:subClassOf :SymbolicData .
+              rdfs:subClassOf :SymbolicData ;
+              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_0e03a375_8af8_46db_88ae_a45fe2d2940f> .
+
+
+###  https://w3id.org/emmo/emmo-lite#DecimalData
+:DecimalData rdf:type owl:Class ;
+             rdfs:subClassOf :RationalData ;
+             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_d43546df_7fd7_44d5_9d7c_0f2bf56cefe3> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Device
 :Device rdf:type owl:Class ;
         rdfs:subClassOf :Object .
+
+
+###  https://w3id.org/emmo/emmo-lite#DoubleData
+:DoubleData rdf:type owl:Class ;
+            rdfs:subClassOf :FloatingPointData ;
+            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_52fa9c76_fc42_4eca_a5c1_6095a1c9caab> .
+
+
+###  https://w3id.org/emmo/emmo-lite#FloatData
+:FloatData rdf:type owl:Class ;
+           rdfs:subClassOf :FloatingPointData ;
+           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_ac9e518d_b403_4d8b_97e2_06f9d40bac01> .
+
+
+###  https://w3id.org/emmo/emmo-lite#FloatingPointData
+:FloatingPointData rdf:type owl:Class ;
+                   rdfs:subClassOf :NumericData ;
+                   rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_88a34881_b8d0_474b_9a08_40dbd414d834> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Fluid
@@ -338,6 +367,12 @@
 ###  https://w3id.org/emmo/emmo-lite#IRI
 :IRI rdf:type owl:Class ;
      rdfs:subClassOf :URI .
+
+
+###  https://w3id.org/emmo/emmo-lite#IntegerData
+:IntegerData rdf:type owl:Class ;
+             rdfs:subClassOf :DecimalData ;
+             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_f8bd64d5_5d3e_4ad4_a46e_c30714fecb7f> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#IntentionalProcess
@@ -379,7 +414,8 @@
 
 ###  https://w3id.org/emmo/emmo-lite#NumericData
 :NumericData rdf:type owl:Class ;
-             rdfs:subClassOf :SymbolicData .
+             rdfs:subClassOf :SymbolicData ;
+             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_8b305b63_6fa3_44dd_9679_17eb8403a07a> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Object
@@ -441,10 +477,28 @@
           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b7bcff25_ffc3_474e_9ab5_01b1664bd4ba> .
 
 
+###  https://w3id.org/emmo/emmo-lite#RationalData
+:RationalData rdf:type owl:Class ;
+              rdfs:subClassOf :RealData ;
+              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_69ebb235_9c5e_443d_9a3b_7042b1005f1f> .
+
+
+###  https://w3id.org/emmo/emmo-lite#RealData
+:RealData rdf:type owl:Class ;
+          rdfs:subClassOf :NumericData ;
+          rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_18d180e4_5e3e_42f7_820c_e08951223486> .
+
+
 ###  https://w3id.org/emmo/emmo-lite#Role
 :Role rdf:type owl:Class ;
       rdfs:subClassOf :Holistic ;
       rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_4f226cf3_6d02_4d35_8566_a9e641bc6ff3> .
+
+
+###  https://w3id.org/emmo/emmo-lite#ScalarData
+:ScalarData rdf:type owl:Class ;
+            rdfs:subClassOf :SymbolicData ;
+            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_dd8301d8_affa_4b1d_8db8_7b9d0a1f2ee7> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Semiotic
@@ -485,7 +539,8 @@
 
 ###  https://w3id.org/emmo/emmo-lite#StringData
 :StringData rdf:type owl:Class ;
-            rdfs:subClassOf :SymbolicData .
+            rdfs:subClassOf :SymbolicData ;
+            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_5f334606_f67d_4f0e_acb9_eeb21cb10c66> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#SubObject
@@ -516,7 +571,8 @@
 
 ###  https://w3id.org/emmo/emmo-lite#SymbolicData
 :SymbolicData rdf:type owl:Class ;
-              rdfs:subClassOf :Data .
+              rdfs:subClassOf :Data ;
+              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_70bbb94e_2ca7_4d73_ba01_6397f134d172> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#System
@@ -545,6 +601,73 @@
 :Whole rdf:type owl:Class ;
        rdfs:subClassOf :Holistic ;
        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_1efe8b96_e006_4a33_bc9a_421406cbb9f0> .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom xsd:boolean ;
+  rdfs:subClassOf :BooleanData
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom xsd:dateTime ;
+  rdfs:subClassOf :DateTimeData
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom xsd:decimal ;
+  rdfs:subClassOf :DecimalData
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom xsd:double ;
+  rdfs:subClassOf :DoubleData
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom xsd:float ;
+  rdfs:subClassOf :FloatData
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom xsd:integer ;
+  rdfs:subClassOf :IntegerData
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom xsd:string ;
+  rdfs:subClassOf :StringData
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom owl:rational ;
+  rdfs:subClassOf :RationalData
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasDataValue ;
+  owl:someValuesFrom owl:real ;
+  rdfs:subClassOf :RealData
+] .
 
 
 ###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
