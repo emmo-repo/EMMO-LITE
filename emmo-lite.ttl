@@ -277,6 +277,12 @@
            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_f76884f7_964e_488e_9bb7_1b2453e9e817> .
 
 
+###  https://w3id.org/emmo/emmo-lite#CondensedMatter
+:CondensedMatter rdf:type owl:Class ;
+                 rdfs:subClassOf :StateOfMatter ;
+                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_220b7201_d277_4dca_bf6a_5a5e2c4062dd> .
+
+
 ###  https://w3id.org/emmo/emmo-lite#Constituent
 :Constituent rdf:type owl:Class ;
              rdfs:subClassOf :Object ,
@@ -289,6 +295,12 @@
                      rdfs:subClassOf :Process ,
                                      :Role ;
                      rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_f68858dd_64f4_4877_b7fb_70d04fbe5bab> .
+
+
+###  https://w3id.org/emmo/emmo-lite#ContinuumSubstance
+:ContinuumSubstance rdf:type owl:Class ;
+                    rdfs:subClassOf :Substance ;
+                    rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_8b0923ab_b500_477b_9ce9_8b3a3e4dc4f2> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Data
@@ -304,6 +316,18 @@
 ###  https://w3id.org/emmo/emmo-lite#Device
 :Device rdf:type owl:Class ;
         rdfs:subClassOf :Object .
+
+
+###  https://w3id.org/emmo/emmo-lite#Fluid
+:Fluid rdf:type owl:Class ;
+       rdfs:subClassOf :StateOfMatter ;
+       rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_87ac88ff_8379_4f5a_8c7b_424a8fff1ee8> .
+
+
+###  https://w3id.org/emmo/emmo-lite#Gas
+:Gas rdf:type owl:Class ;
+     rdfs:subClassOf :Fluid ;
+     rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_04f2a2d5_e799_4692_a654_420e76f5acc1> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Holistic
@@ -326,6 +350,31 @@
 ###  https://w3id.org/emmo/emmo-lite#JSONData
 :JSONData rdf:type owl:Class ;
           rdfs:subClassOf :SymbolicData .
+
+
+###  https://w3id.org/emmo/emmo-lite#Liquid
+:Liquid rdf:type owl:Class ;
+        rdfs:subClassOf :CondensedMatter ,
+                        :Fluid ;
+        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_7509da43_56b1_4d7f_887a_65d1663df4ba> .
+
+
+###  https://w3id.org/emmo/emmo-lite#Material
+:Material rdf:type owl:Class ;
+          rdfs:subClassOf :Substance ;
+          rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> .
+
+
+###  https://w3id.org/emmo/emmo-lite#Matter
+:Matter rdf:type owl:Class ;
+        rdfs:subClassOf :PhysicalObject ;
+        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1> .
+
+
+###  https://w3id.org/emmo/emmo-lite#MesoscopicSubstance
+:MesoscopicSubstance rdf:type owl:Class ;
+                     rdfs:subClassOf :Substance ;
+                     rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_660a4964_0333_4663_bc66_e93ef59b0679> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#NumericData
@@ -374,6 +423,12 @@
                     rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_5cc4e111_3eb1_44a3_9369_5af3846cf605> .
 
 
+###  https://w3id.org/emmo/emmo-lite#Plasma
+:Plasma rdf:type owl:Class ;
+        rdfs:subClassOf :Fluid ;
+        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_4c21fb86_fdcf_444e_b498_86fe656295af> .
+
+
 ###  https://w3id.org/emmo/emmo-lite#Process
 :Process rdf:type owl:Class ;
          rdfs:subClassOf :Persistence ;
@@ -402,11 +457,23 @@
       rdfs:subClassOf :Semiotic .
 
 
+###  https://w3id.org/emmo/emmo-lite#Solid
+:Solid rdf:type owl:Class ;
+       rdfs:subClassOf :CondensedMatter ;
+       rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_a2b006f2_bbfd_4dba_bcaa_3fca20cd6be1> .
+
+
 ###  https://w3id.org/emmo/emmo-lite#Stage
 :Stage rdf:type owl:Class ;
        rdfs:subClassOf :Process ,
                        :Role ;
        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_a633c6f8_4269_4870_9b28_f5ca1783fd54> .
+
+
+###  https://w3id.org/emmo/emmo-lite#StateOfMatter
+:StateOfMatter rdf:type owl:Class ;
+               rdfs:subClassOf :ContinuumSubstance ;
+               rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b9695e87_8261_412e_83cd_a86459426a28> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Status
@@ -433,6 +500,18 @@
             rdfs:subClassOf :Process ,
                             :Role ;
             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_49804605_c0fe_4538_abda_f70ba1dc8a5d> .
+
+
+###  https://w3id.org/emmo/emmo-lite#Substance
+:Substance rdf:type owl:Class ;
+           rdfs:subClassOf :Matter ;
+           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_bc37743c_37c4_4ec7_9d58_d1aae5567352> .
+
+
+###  https://w3id.org/emmo/emmo-lite#Suspension
+:Suspension rdf:type owl:Class ;
+            rdfs:subClassOf :StateOfMatter ;
+            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_4a464c8d_8895_44a8_a628_aed13509f1bd> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#SymbolicData
