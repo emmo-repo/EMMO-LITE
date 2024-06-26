@@ -55,16 +55,126 @@
              rdfs:range :Object .
 
 
+###  https://w3id.org/emmo/emmo-lite#hasBehaviour
+:hasBehaviour rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasTemporalPart ;
+              owl:inverseOf :isBehaviourOf ;
+              rdfs:domain :Object ;
+              rdfs:range :Behaviour .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasConstituent
+:hasConstituent rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasSpatialPart ;
+                owl:inverseOf :isConstituentOf ;
+                rdfs:domain :Object ;
+                rdfs:range :Constituent .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasConstitutiveProcess
+:hasConstitutiveProcess rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :hasSpatialPart ;
+                        owl:inverseOf :isConstitutiveProcessOf ;
+                        rdfs:domain :Object ;
+                        rdfs:range :ConstitutiveProcess .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasInput
+:hasInput rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :properOverlaps ;
+          owl:inverseOf :isInputOf ;
+          rdfs:domain :Process .
+
+
 ###  https://w3id.org/emmo/emmo-lite#hasNext
 :hasNext rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :isBeforeOf ;
          rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_499e24a5_5072_4c83_8625_fe3f96ae4a8d> .
 
 
+###  https://w3id.org/emmo/emmo-lite#hasOutput
+:hasOutput rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :properOverlaps ;
+           owl:inverseOf :isOutputOf ;
+           rdfs:domain :Process .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :isMereologicalRelatedTo ;
+         owl:inverseOf :isPartOf .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasParticipant
+:hasParticipant rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasSpatialPart ;
+                owl:inverseOf :isParticipantOf ;
+                rdfs:domain :Process ;
+                rdfs:range :Participant .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasProperty
+:hasProperty rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :hasSign ;
+             owl:inverseOf :isPropertyOf ;
+             rdfs:range :Property .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasSign
+:hasSign rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+         owl:inverseOf :isSignOf ;
+         rdfs:range :Sign .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasSpatialPart
+:hasSpatialPart rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasPart ;
+                owl:inverseOf :isSpatialPartOf .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasStage
+:hasStage rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasTemporalPart ;
+          owl:inverseOf :isStageOf ;
+          rdfs:domain :Process ;
+          rdfs:range :Stage .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasStatus
+:hasStatus rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasTemporalPart ;
+           owl:inverseOf :isStatusOf ;
+           rdfs:domain :Process ;
+           rdfs:range :Status .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasSubObject
+:hasSubObject rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasTemporalPart ;
+              owl:inverseOf :isSubObjectOf ;
+              rdfs:domain :Object ;
+              rdfs:range :SubObject .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasSubProcess
+:hasSubProcess rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasSpatialPart ;
+               owl:inverseOf :isSubProcessOf ;
+               rdfs:domain :Process ;
+               rdfs:range :SubProcess .
+
+
 ###  https://w3id.org/emmo/emmo-lite#hasSuccessor
 :hasSuccessor rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :isBeforeOf ;
               rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_3733bd38_ca2b_4264_a92a_3075a1715598> .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasTemporalPart
+:hasTemporalPart rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasPart ;
+                 owl:inverseOf :isTemporalPartOf .
 
 
 ###  https://w3id.org/emmo/emmo-lite#interactsWith
@@ -121,7 +231,8 @@
 
 ###  https://w3id.org/emmo/emmo-lite#isMereologicalRelatedTo
 :isMereologicalRelatedTo rdf:type owl:ObjectProperty ;
-                         rdfs:subPropertyOf owl:topObjectProperty .
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdf:type owl:SymmetricProperty .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isOutputOf
@@ -158,7 +269,8 @@
 
 ###  https://w3id.org/emmo/emmo-lite#isSemioticallyRelatedTo
 :isSemioticallyRelatedTo rdf:type owl:ObjectProperty ;
-                         rdfs:subPropertyOf owl:topObjectProperty .
+                         rdfs:subPropertyOf owl:topObjectProperty ;
+                         rdf:type owl:SymmetricProperty .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isSignOf
@@ -228,6 +340,8 @@
 ###  https://w3id.org/emmo/emmo-lite#properOverlaps
 :properOverlaps rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isMereologicalRelatedTo ;
+                rdf:type owl:SymmetricProperty ,
+                         owl:IrreflexiveProperty ;
                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
 
 
