@@ -79,11 +79,34 @@
                         rdfs:range :ConstitutiveProcess .
 
 
+###  https://w3id.org/emmo/emmo-lite#hasDatum
+:hasDatum rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasPart ;
+          owl:inverseOf :isDatumOf ;
+          rdfs:domain :DataSet ;
+          rdfs:range :Datum .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasDescription
+:hasDescription rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasSign ;
+                owl:inverseOf :isDescriptionOf ;
+                rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_c58c799e_cc6c_4310_a3f1_78da70705b2a> .
+
+
 ###  https://w3id.org/emmo/emmo-lite#hasInput
 :hasInput rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :properOverlaps ;
           owl:inverseOf :isInputOf ;
           rdfs:domain :Process .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasInterpreter
+:hasInterpreter rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+                owl:inverseOf :isInterpreterOf ;
+                rdfs:domain :Sign ;
+                rdfs:range :Interpreter .
 
 
 ###  https://w3id.org/emmo/emmo-lite#hasNext
@@ -120,10 +143,19 @@
              rdfs:range :Property .
 
 
+###  https://w3id.org/emmo/emmo-lite#hasReferent
+:hasReferent rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+             owl:inverseOf :isReferentOf ;
+             rdfs:domain :Interpreter ;
+             rdfs:range :Referent .
+
+
 ###  https://w3id.org/emmo/emmo-lite#hasSign
 :hasSign rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :isSemioticallyRelatedTo ;
          owl:inverseOf :isSignOf ;
+         rdfs:domain :Referent ;
          rdfs:range :Sign .
 
 
@@ -223,10 +255,27 @@
                          rdfs:range :Object .
 
 
+###  https://w3id.org/emmo/emmo-lite#isDatumOf
+:isDatumOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :isPartOf .
+
+
+###  https://w3id.org/emmo/emmo-lite#isDescriptionOf
+:isDescriptionOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :isSignOf .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isInputOf
 :isInputOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :properOverlaps ;
            rdfs:range :Process .
+
+
+###  https://w3id.org/emmo/emmo-lite#isInterpreterOf
+:isInterpreterOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+                 rdfs:domain :Interpreter ;
+                 rdfs:range :Sign .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isMereologicalRelatedTo
@@ -260,6 +309,13 @@
               rdfs:domain :Property .
 
 
+###  https://w3id.org/emmo/emmo-lite#isReferentOf
+:isReferentOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+              rdfs:domain :Referent ;
+              rdfs:range :Interpreter .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isRemovedfrom
 :isRemovedfrom rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :properOverlaps ;
@@ -276,7 +332,8 @@
 ###  https://w3id.org/emmo/emmo-lite#isSignOf
 :isSignOf rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-          rdfs:domain :Sign .
+          rdfs:domain :Sign ;
+          rdfs:range :Referent .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isSpatialPartOf
@@ -377,8 +434,14 @@
 
 ###  https://w3id.org/emmo/emmo-lite#Agent
 :Agent rdf:type owl:Class ;
-       rdfs:subClassOf :Participant ;
+       rdfs:subClassOf :Participant ,
+                       :Role ;
        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_2480b72b_db8d_460f_9a5f_c2912f979046> .
+
+
+###  https://w3id.org/emmo/emmo-lite#AnalogData
+:AnalogData rdf:type owl:Class ;
+            rdfs:subClassOf :DataByDiscretness .
 
 
 ###  https://w3id.org/emmo/emmo-lite#ArrayData
@@ -390,8 +453,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#Behaviour
 :Behaviour rdf:type owl:Class ;
-           rdfs:subClassOf :Process ,
-                           :Role ;
+           rdfs:subClassOf :Process ;
            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_210e7e99_c1cf_44cc_87c7_310a10ff068b> .
 
 
@@ -401,9 +463,15 @@
              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_54dc83cb_06e1_4739_9e45_bc09cead7f48> .
 
 
+###  https://w3id.org/emmo/emmo-lite#Characterisation
+:Characterisation rdf:type owl:Class ;
+                  rdfs:subClassOf :Measurement .
+
+
 ###  https://w3id.org/emmo/emmo-lite#Component
 :Component rdf:type owl:Class ;
            rdfs:subClassOf :Constituent ,
+                           :Role ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :isConstituentOf ;
                              owl:someValuesFrom :System
@@ -419,15 +487,13 @@
 
 ###  https://w3id.org/emmo/emmo-lite#Constituent
 :Constituent rdf:type owl:Class ;
-             rdfs:subClassOf :Object ,
-                             :Role ;
+             rdfs:subClassOf :Object ;
              rdfs:isDefinedBy "https://w3id.org/emmo#EMMO_ceaaf9f7_fd11_424b_8fda_9afa186af186"^^xsd:anyURI .
 
 
 ###  https://w3id.org/emmo/emmo-lite#ConstitutiveProcess
 :ConstitutiveProcess rdf:type owl:Class ;
-                     rdfs:subClassOf :Process ,
-                                     :Role ;
+                     rdfs:subClassOf :Process ;
                      rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_f68858dd_64f4_4877_b7fb_70d04fbe5bab> .
 
 
@@ -442,10 +508,30 @@
       rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_3e7add3d_e6ed_489a_a796_8e31fef9b490> .
 
 
+###  https://w3id.org/emmo/emmo-lite#DataByDiscretness
+:DataByDiscretness rdf:type owl:Class ;
+                   rdfs:subClassOf :Data .
+
+
+###  https://w3id.org/emmo/emmo-lite#DataByStructure
+:DataByStructure rdf:type owl:Class ;
+                 rdfs:subClassOf :Data .
+
+
+###  https://w3id.org/emmo/emmo-lite#DataSet
+:DataSet rdf:type owl:Class ;
+         rdfs:subClassOf :DataByStructure .
+
+
 ###  https://w3id.org/emmo/emmo-lite#DateTimeData
 :DateTimeData rdf:type owl:Class ;
               rdfs:subClassOf :SymbolicData ;
               rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_0e03a375_8af8_46db_88ae_a45fe2d2940f> .
+
+
+###  https://w3id.org/emmo/emmo-lite#Datum
+:Datum rdf:type owl:Class ;
+       rdfs:subClassOf :DataByStructure .
 
 
 ###  https://w3id.org/emmo/emmo-lite#DecimalData
@@ -454,9 +540,20 @@
              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_d43546df_7fd7_44d5_9d7c_0f2bf56cefe3> .
 
 
+###  https://w3id.org/emmo/emmo-lite#Description
+:Description rdf:type owl:Class ;
+             rdfs:subClassOf :Sign ;
+             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_35d4c439_fcb6_4399_a855_a89a207b41e9> .
+
+
 ###  https://w3id.org/emmo/emmo-lite#Device
 :Device rdf:type owl:Class ;
         rdfs:subClassOf :Object .
+
+
+###  https://w3id.org/emmo/emmo-lite#DiscreteData
+:DiscreteData rdf:type owl:Class ;
+              rdfs:subClassOf :DataByDiscretness .
 
 
 ###  https://w3id.org/emmo/emmo-lite#DoubleData
@@ -512,6 +609,11 @@
                     rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_bafc17b5_9be4_4823_8bbe_ab4e90b6738c> .
 
 
+###  https://w3id.org/emmo/emmo-lite#Interpreter
+:Interpreter rdf:type owl:Class ;
+             rdfs:subClassOf :Semiotics .
+
+
 ###  https://w3id.org/emmo/emmo-lite#JSONData
 :JSONData rdf:type owl:Class ;
           rdfs:subClassOf :SymbolicData .
@@ -536,6 +638,16 @@
         rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1> .
 
 
+###  https://w3id.org/emmo/emmo-lite#Measurement
+:Measurement rdf:type owl:Class ;
+             rdfs:subClassOf :Semiosis .
+
+
+###  https://w3id.org/emmo/emmo-lite#Measurer
+:Measurer rdf:type owl:Class ;
+          rdfs:subClassOf :Interpreter .
+
+
 ###  https://w3id.org/emmo/emmo-lite#MesoscopicSubstance
 :MesoscopicSubstance rdf:type owl:Class ;
                      rdfs:subClassOf :Substance ;
@@ -556,8 +668,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#Participant
 :Participant rdf:type owl:Class ;
-             rdfs:subClassOf :Object ,
-                             :Role ;
+             rdfs:subClassOf :Object ;
              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_13191289_6c2b_4741_93e1_82d53bd0e703> .
 
 
@@ -619,10 +730,20 @@
           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_18d180e4_5e3e_42f7_820c_e08951223486> .
 
 
+###  https://w3id.org/emmo/emmo-lite#Referent
+:Referent rdf:type owl:Class ;
+          rdfs:subClassOf :Semiotics .
+
+
 ###  https://w3id.org/emmo/emmo-lite#Role
 :Role rdf:type owl:Class ;
       rdfs:subClassOf :Holistic ;
       rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_4f226cf3_6d02_4d35_8566_a9e641bc6ff3> .
+
+
+###  https://w3id.org/emmo/emmo-lite#Sample
+:Sample rdf:type owl:Class ;
+        rdfs:subClassOf :Referent .
 
 
 ###  https://w3id.org/emmo/emmo-lite#ScalarData
@@ -631,14 +752,20 @@
             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_dd8301d8_affa_4b1d_8db8_7b9d0a1f2ee7> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Semiotic
-:Semiotic rdf:type owl:Class ;
-          rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_8bb6b688_812a_4cb9_b76c_d5a058928719> .
+###  https://w3id.org/emmo/emmo-lite#Semiosis
+:Semiosis rdf:type owl:Class ;
+          rdfs:subClassOf :Process ,
+                          :Semiotics .
+
+
+###  https://w3id.org/emmo/emmo-lite#Semiotics
+:Semiotics rdf:type owl:Class ;
+           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_8bb6b688_812a_4cb9_b76c_d5a058928719> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Sign
 :Sign rdf:type owl:Class ;
-      rdfs:subClassOf :Semiotic .
+      rdfs:subClassOf :Semiotics .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Solid
@@ -649,8 +776,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#Stage
 :Stage rdf:type owl:Class ;
-       rdfs:subClassOf :Process ,
-                       :Role ;
+       rdfs:subClassOf :Process ;
        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_a633c6f8_4269_4870_9b28_f5ca1783fd54> .
 
 
@@ -662,8 +788,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#Status
 :Status rdf:type owl:Class ;
-        rdfs:subClassOf :Object ,
-                        :Role ;
+        rdfs:subClassOf :Object ;
         rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_d9589ed2_5304_48b3_9795_11bf44e64e9b> .
 
 
@@ -675,15 +800,13 @@
 
 ###  https://w3id.org/emmo/emmo-lite#SubObject
 :SubObject rdf:type owl:Class ;
-           rdfs:subClassOf :Object ,
-                           :Role ;
+           rdfs:subClassOf :Object ;
            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_2553c342_fc28_47d8_8e19_7a98fa08f150> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#SubProcess
 :SubProcess rdf:type owl:Class ;
-            rdfs:subClassOf :Process ,
-                            :Role ;
+            rdfs:subClassOf :Process ;
             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_49804605_c0fe_4538_abda_f70ba1dc8a5d> .
 
 
@@ -701,7 +824,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#SymbolicData
 :SymbolicData rdf:type owl:Class ;
-              rdfs:subClassOf :Data ;
+              rdfs:subClassOf :DiscreteData ;
               rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_70bbb94e_2ca7_4d73_ba01_6397f134d172> .
 
 
@@ -800,4 +923,4 @@
 ] .
 
 
-###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
