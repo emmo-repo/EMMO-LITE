@@ -63,6 +63,15 @@
               rdfs:range :Behaviour .
 
 
+###  https://w3id.org/emmo/emmo-lite#hasComponent
+:hasComponent rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasConstituent ;
+              owl:inverseOf :isComponentOf ;
+              rdfs:domain :System ;
+              rdfs:range :Component ;
+              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_3c7f239f_e833_4a2b_98a1_c88831770c1b> .
+
+
 ###  https://w3id.org/emmo/emmo-lite#hasConstituent
 :hasConstituent rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :hasSpatialPart ;
@@ -241,6 +250,13 @@
            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_d67ee67e_4fac_4676_82c9_aec361dba698> .
 
 
+###  https://w3id.org/emmo/emmo-lite#isComponentOf
+:isComponentOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :isConstituentOf ;
+               rdfs:domain :Component ;
+               rdfs:range :System .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isConstituentOf
 :isConstituentOf rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isSpatialPartOf ;
@@ -400,22 +416,6 @@
                 rdf:type owl:SymmetricProperty ,
                          owl:IrreflexiveProperty ;
                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
-
-
-###  https://www.cobrain-project.eu/thermalspraying#hasComponent
-<https://www.cobrain-project.eu/thermalspraying#hasComponent> rdf:type owl:ObjectProperty ;
-                                                              rdfs:subPropertyOf :hasConstituent ;
-                                                              owl:inverseOf <https://www.cobrain-project.eu/thermalspraying#isComponentOf> ;
-                                                              rdfs:domain :System ;
-                                                              rdfs:range :Component ;
-                                                              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_3c7f239f_e833_4a2b_98a1_c88831770c1b> .
-
-
-###  https://www.cobrain-project.eu/thermalspraying#isComponentOf
-<https://www.cobrain-project.eu/thermalspraying#isComponentOf> rdf:type owl:ObjectProperty ;
-                                                               rdfs:subPropertyOf :isConstituentOf ;
-                                                               rdfs:domain :Component ;
-                                                               rdfs:range :System .
 
 
 #################################################################
