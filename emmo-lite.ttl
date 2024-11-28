@@ -98,7 +98,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#hasDescription
 :hasDescription rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasSign ;
+                rdfs:subPropertyOf :isRepresentedBy ;
                 owl:inverseOf :isDescriptionOf ;
                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_c58c799e_cc6c_4310_a3f1_78da70705b2a> .
 
@@ -108,14 +108,6 @@
           rdfs:subPropertyOf :properOverlaps ;
           owl:inverseOf :isInputOf ;
           rdfs:domain :Process .
-
-
-###  https://w3id.org/emmo/emmo-lite#hasInterpreter
-:hasInterpreter rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-                owl:inverseOf :isInterpreterOf ;
-                rdfs:domain :Sign ;
-                rdfs:range :Interpreter .
 
 
 ###  https://w3id.org/emmo/emmo-lite#hasNext
@@ -147,25 +139,9 @@
 
 ###  https://w3id.org/emmo/emmo-lite#hasProperty
 :hasProperty rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :hasSign ;
+             rdfs:subPropertyOf :isRepresentedBy ;
              owl:inverseOf :isPropertyOf ;
              rdfs:range :Property .
-
-
-###  https://w3id.org/emmo/emmo-lite#hasReferent
-:hasReferent rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-             owl:inverseOf :isReferentOf ;
-             rdfs:domain :Interpreter ;
-             rdfs:range :Referent .
-
-
-###  https://w3id.org/emmo/emmo-lite#hasSign
-:hasSign rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-         owl:inverseOf :isSignOf ;
-         rdfs:domain :Referent ;
-         rdfs:range :Sign .
 
 
 ###  https://w3id.org/emmo/emmo-lite#hasSpatialPart
@@ -224,6 +200,14 @@
                rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_d01b3ee2_91a5_4ce2_95cd_f0d2c333c6d3> .
 
 
+###  https://w3id.org/emmo/emmo-lite#interprets
+:interprets rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+            owl:inverseOf :isInterpretedBy ;
+            rdfs:domain :Interpreter ;
+            rdfs:range :Sign .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isAddedTo
 :isAddedTo rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :properOverlaps ;
@@ -278,7 +262,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#isDescriptionOf
 :isDescriptionOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isSignOf .
+                 rdfs:subPropertyOf :standsFor .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isInputOf
@@ -287,11 +271,19 @@
            rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#isInterpreterOf
-:isInterpreterOf rdf:type owl:ObjectProperty ;
+###  https://w3id.org/emmo/emmo-lite#isInterpretationAccordingTo
+:isInterpretationAccordingTo rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+                             owl:inverseOf :providesInterpretation ;
+                             rdfs:domain :Referent ;
+                             rdfs:range :Interpreter .
+
+
+###  https://w3id.org/emmo/emmo-lite#isInterpretedBy
+:isInterpretedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-                 rdfs:domain :Interpreter ;
-                 rdfs:range :Sign .
+                 rdfs:domain :Sign ;
+                 rdfs:range :Interpreter .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isMereologicalRelatedTo
@@ -321,15 +313,8 @@
 
 ###  https://w3id.org/emmo/emmo-lite#isPropertyOf
 :isPropertyOf rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :isSignOf ;
+              rdfs:subPropertyOf :standsFor ;
               rdfs:domain :Property .
-
-
-###  https://w3id.org/emmo/emmo-lite#isReferentOf
-:isReferentOf rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-              rdfs:domain :Referent ;
-              rdfs:range :Interpreter .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isRemovedfrom
@@ -339,17 +324,18 @@
                rdfs:range :Object .
 
 
+###  https://w3id.org/emmo/emmo-lite#isRepresentedBy
+:isRepresentedBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+                 owl:inverseOf :standsFor ;
+                 rdfs:domain :Referent ;
+                 rdfs:range :Sign .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isSemioticallyRelatedTo
 :isSemioticallyRelatedTo rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf owl:topObjectProperty ;
                          rdf:type owl:SymmetricProperty .
-
-
-###  https://w3id.org/emmo/emmo-lite#isSignOf
-:isSignOf rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-          rdfs:domain :Sign ;
-          rdfs:range :Referent .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isSpatialPartOf
@@ -416,6 +402,20 @@
                 rdf:type owl:SymmetricProperty ,
                          owl:IrreflexiveProperty ;
                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
+
+
+###  https://w3id.org/emmo/emmo-lite#providesInterpretation
+:providesInterpretation rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+                        rdfs:domain :Interpreter ;
+                        rdfs:range :Referent .
+
+
+###  https://w3id.org/emmo/emmo-lite#standsFor
+:standsFor rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :isSemioticallyRelatedTo ;
+           rdfs:domain :Sign ;
+           rdfs:range :Referent .
 
 
 #################################################################
