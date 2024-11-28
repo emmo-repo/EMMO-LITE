@@ -110,6 +110,13 @@
           rdfs:domain :Process .
 
 
+###  https://w3id.org/emmo/emmo-lite#hasInterpreter
+:hasInterpreter rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :semioticOvercross ;
+                rdfs:domain :Semiosis ;
+                rdfs:range :Interpreter .
+
+
 ###  https://w3id.org/emmo/emmo-lite#hasNext
 :hasNext rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :isBeforeOf ;
@@ -142,6 +149,20 @@
              rdfs:subPropertyOf :isRepresentedBy ;
              owl:inverseOf :isPropertyOf ;
              rdfs:range :Property .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasReferent
+:hasReferent rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :semioticOvercross ;
+             rdfs:domain :Semiosis ;
+             rdfs:range :Referent .
+
+
+###  https://w3id.org/emmo/emmo-lite#hasSign
+:hasSign rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :semioticOvercross ;
+         rdfs:domain :Semiosis ;
+         rdfs:range :Sign .
 
 
 ###  https://w3id.org/emmo/emmo-lite#hasSpatialPart
@@ -409,6 +430,11 @@
                         rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                         rdfs:domain :Interpreter ;
                         rdfs:range :Referent .
+
+
+###  https://w3id.org/emmo/emmo-lite#semioticOvercross
+:semioticOvercross rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :isMereologicalRelatedTo .
 
 
 ###  https://w3id.org/emmo/emmo-lite#standsFor
