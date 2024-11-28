@@ -43,14 +43,14 @@
 
 ###  https://w3id.org/emmo/emmo-lite#disappearsInto
 :disappearsInto rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :properOverlaps ;
+                rdfs:subPropertyOf :affects ;
                 rdfs:domain :Process ;
                 rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-lite#emergesFrom
 :emergesFrom rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :properOverlaps ;
+             rdfs:subPropertyOf :affects ;
              rdfs:domain :Process ;
              rdfs:range :Object .
 
@@ -210,7 +210,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#isAddedTo
 :isAddedTo rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :properOverlaps ;
+           rdfs:subPropertyOf :partakesIn ;
            rdfs:domain :Object ;
            rdfs:range :Object .
 
@@ -319,7 +319,7 @@
 
 ###  https://w3id.org/emmo/emmo-lite#isRemovedfrom
 :isRemovedfrom rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :properOverlaps ;
+               rdfs:subPropertyOf :partakesIn ;
                rdfs:domain :Object ;
                rdfs:range :Object .
 
