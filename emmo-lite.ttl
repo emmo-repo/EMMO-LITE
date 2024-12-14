@@ -117,7 +117,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#hasBehaviour
 :hasBehaviour rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasTemporalPart ;
+              rdfs:subPropertyOf :hasProperPart ;
               owl:inverseOf :isBehaviourOf ;
               rdfs:domain :Object ;
               rdfs:range :Behaviour .
@@ -134,7 +134,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#hasConstituent
 :hasConstituent rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasSpatialPart ;
+                rdfs:subPropertyOf :hasProperPart ;
                 owl:inverseOf :isConstituentOf ;
                 rdfs:domain :Object ;
                 rdfs:range :Constituent .
@@ -142,7 +142,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#hasConstitutiveProcess
 :hasConstitutiveProcess rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf :hasSpatialPart ;
+                        rdfs:subPropertyOf :hasProperPart ;
                         owl:inverseOf :isConstitutiveProcessOf ;
                         rdfs:domain :Object ;
                         rdfs:range :ConstitutiveProcess .
@@ -177,13 +177,6 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
                 rdfs:range :Interpreter .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasNonTemporalPart
-:hasNonTemporalPart rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf :hasProperPart ;
-                    owl:inverseOf :isNonTemporalPartOf ;
-                    rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_9a50a0ae_841a_46fe_8b23_3df319b60611> .
-
-
 ###  https://w3id.org/emmo/emmo-lite#hasOutput
 :hasOutput rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :properOverlaps ;
@@ -200,7 +193,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#hasParticipant
 :hasParticipant rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasSpatialPart ;
+                rdfs:subPropertyOf :hasProperPart ;
                 owl:inverseOf :isParticipantOf ;
                 rdfs:domain :Process ;
                 rdfs:range :Participant .
@@ -219,7 +212,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 :hasProperty rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf :isRepresentedBy ;
              owl:inverseOf :isPropertyOf ;
-             rdfs:range :Property .
+             rdfs:range :Property ;
+             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_e1097637_70d2_4895_973f_2396f04fa204> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#hasReferent
@@ -236,16 +230,9 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
          rdfs:range :Sign .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasSpatialPart
-:hasSpatialPart rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasNonTemporalPart ;
-                owl:inverseOf :isSpatialPartOf ;
-                rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_dc57d998_23db_4d8e_b2cd_f346b195b846> .
-
-
 ###  https://w3id.org/emmo/emmo-lite#hasStage
 :hasStage rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :hasTemporalPart ;
+          rdfs:subPropertyOf :hasProperPart ;
           owl:inverseOf :isStageOf ;
           rdfs:domain :Process ;
           rdfs:range :Stage .
@@ -253,7 +240,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#hasStatus
 :hasStatus rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :hasTemporalPart ;
+           rdfs:subPropertyOf :hasProperPart ;
            owl:inverseOf :isStatusOf ;
            rdfs:domain :Process ;
            rdfs:range :Status .
@@ -261,7 +248,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#hasSubObject
 :hasSubObject rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasTemporalPart ;
+              rdfs:subPropertyOf :hasProperPart ;
               owl:inverseOf :isSubObjectOf ;
               rdfs:domain :Object ;
               rdfs:range :SubObject .
@@ -269,17 +256,10 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#hasSubProcess
 :hasSubProcess rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :hasSpatialPart ;
+               rdfs:subPropertyOf :hasProperPart ;
                owl:inverseOf :isSubProcessOf ;
                rdfs:domain :Process ;
                rdfs:range :SubProcess .
-
-
-###  https://w3id.org/emmo/emmo-lite#hasTemporalPart
-:hasTemporalPart rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :hasProperPart ;
-                 owl:inverseOf :isTemporalPartOf ;
-                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_7afbed84_7593_4a23_bd88_9d9c6b04e8f6> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#interprets
@@ -287,7 +267,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
             rdfs:subPropertyOf :isSemioticallyRelatedTo ;
             owl:inverseOf :isInterpretedBy ;
             rdfs:domain :Interpreter ;
-            rdfs:range :Sign .
+            rdfs:range :Sign ;
+            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_cd9a3a58_dabc_4c46_9ea4_03ca000b2022> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isAddedTo
@@ -314,7 +295,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#isBehaviourOf
 :isBehaviourOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :isTemporalPartOf ;
+               rdfs:subPropertyOf :isProperPartOF ;
                rdfs:domain :Behaviour ;
                rdfs:range :Object .
 
@@ -342,14 +323,14 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#isConstituentOf
 :isConstituentOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isSpatialPartOf ;
+                 rdfs:subPropertyOf :isProperPartOF ;
                  rdfs:domain :Constituent ;
                  rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isConstitutiveProcessOf
 :isConstitutiveProcessOf rdf:type owl:ObjectProperty ;
-                         rdfs:subPropertyOf :isSpatialPartOf ;
+                         rdfs:subPropertyOf :isProperPartOF ;
                          rdfs:domain :ConstitutiveProcess ;
                          rdfs:range :Object .
 
@@ -361,7 +342,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#isDescriptionOf
 :isDescriptionOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :standsFor .
+                 rdfs:subPropertyOf :standsFor ;
+                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_f702bad4_fc77_41f0_a26d_79f6444fd4f3> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isInputOf
@@ -375,19 +357,16 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
                              rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                              owl:inverseOf :providesInterpretation ;
                              rdfs:domain :Referent ;
-                             rdfs:range :Interpreter .
+                             rdfs:range :Interpreter ;
+                             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_0ed18c6b_8289_44fd_a7d7_c15a8786cdc0> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isInterpretedBy
 :isInterpretedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                  rdfs:domain :Sign ;
-                 rdfs:range :Interpreter .
-
-
-###  https://w3id.org/emmo/emmo-lite#isNonTemporalPartOf
-:isNonTemporalPartOf rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf :isProperPartOF .
+                 rdfs:range :Interpreter ;
+                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_4832e353_6a2d_4deb_9a5b_96989afaff2d> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isOutputOf
@@ -411,7 +390,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#isParticipantOf
 :isParticipantOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isSpatialPartOf ;
+                 rdfs:subPropertyOf :isProperPartOF ;
                  rdfs:domain :Participant ;
                  rdfs:range :Process .
 
@@ -427,7 +406,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#isPropertyOf
 :isPropertyOf rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :standsFor ;
-              rdfs:domain :Property .
+              rdfs:domain :Property ;
+              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b3ddad94_ef7e_4b97_8329_9e7c788dd94d> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isRemovedfrom
@@ -442,51 +422,43 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
                  rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                  owl:inverseOf :standsFor ;
                  rdfs:domain :Referent ;
-                 rdfs:range :Sign .
+                 rdfs:range :Sign ;
+                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_60577dea_9019_4537_ac41_80b0fb563d41> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isSemioticallyRelatedTo
 :isSemioticallyRelatedTo rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf owl:topObjectProperty ;
-                         rdf:type owl:SymmetricProperty .
-
-
-###  https://w3id.org/emmo/emmo-lite#isSpatialPartOf
-:isSpatialPartOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isNonTemporalPartOf .
+                         rdf:type owl:SymmetricProperty ;
+                         rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_2337e25c_3c60_43fc_a8f9_b11a3f974291> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isStageOf
 :isStageOf rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :isTemporalPartOf ;
+           rdfs:subPropertyOf :isProperPartOF ;
            rdfs:domain :Stage ;
            rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isStatusOf
 :isStatusOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :isTemporalPartOf ;
+            rdfs:subPropertyOf :isProperPartOF ;
             rdfs:domain :Status ;
             rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isSubObjectOf
 :isSubObjectOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :isTemporalPartOf ;
+               rdfs:subPropertyOf :isProperPartOF ;
                rdfs:domain :SubObject ;
                rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isSubProcessOf
 :isSubProcessOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :isSpatialPartOf ;
+                rdfs:subPropertyOf :isProperPartOF ;
                 rdfs:domain :SubProcess ;
                 rdfs:range :Process .
-
-
-###  https://w3id.org/emmo/emmo-lite#isTemporalPartOf
-:isTemporalPartOf rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf :isProperPartOF .
 
 
 ###  https://w3id.org/emmo/emmo-lite#overcrosses
@@ -536,7 +508,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 :providesInterpretation rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                         rdfs:domain :Interpreter ;
-                        rdfs:range :Referent .
+                        rdfs:range :Referent ;
+                        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_f2fc1ce9_cc3b_4eb5_a112_3c85d1b1374a> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#semioticOvercross
@@ -548,7 +521,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 :standsFor rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :isSemioticallyRelatedTo ;
            rdfs:domain :Sign ;
-           rdfs:range :Referent .
+           rdfs:range :Referent ;
+           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_82a96de2_41aa_4bf7_b7ac_de1373d50160> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#successorOf
@@ -572,6 +546,12 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 #    Classes
 #################################################################
 
+###  https://w3id.org/emmo/emmo-lite#Agency
+:Agency rdf:type owl:Class ;
+        rdfs:subClassOf :Whole ;
+        rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_a49c2441_1e54_43f0_a1cf_2f553a23ac34> .
+
+
 ###  https://w3id.org/emmo/emmo-lite#Agent
 :Agent rdf:type owl:Class ;
        rdfs:subClassOf :Participant ,
@@ -581,7 +561,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#AnalogData
 :AnalogData rdf:type owl:Class ;
-            rdfs:subClassOf :DataByDiscretness .
+            rdfs:subClassOf :DataByDiscretness ;
+            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_0d1c0018_42e2_4506_bc3d_f53c117c1ad3> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#ArrayData
@@ -650,17 +631,20 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#DataByDiscretness
 :DataByDiscretness rdf:type owl:Class ;
-                   rdfs:subClassOf :Data .
+                   rdfs:subClassOf :Data ;
+                   rdfs:isDefinedBy <https://w3id.org.org/emmo#EMMO_c66ad523_3937_485e_91bb_ad488ddb373f> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#DataByStructure
 :DataByStructure rdf:type owl:Class ;
-                 rdfs:subClassOf :Data .
+                 rdfs:subClassOf :Data ;
+                 rdfs:isDefinedBy <https://w3id.org.org/emmo#EMMO_1a40459e_10d8_49b3_bb8c_c3595fb1d0bb> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#DataSet
 :DataSet rdf:type owl:Class ;
-         rdfs:subClassOf :DataByStructure .
+         rdfs:subClassOf :DataByStructure ;
+         rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_194e367c_9783_4bf5_96d0_9ad597d48d9a> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#DateTimeData
@@ -671,7 +655,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#Datum
 :Datum rdf:type owl:Class ;
-       rdfs:subClassOf :DataByStructure .
+       rdfs:subClassOf :DataByStructure ;
+       rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_50d6236a_7667_4883_8ae1_9bb5d190423a> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#DecimalData
@@ -693,7 +678,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#DiscreteData
 :DiscreteData rdf:type owl:Class ;
-              rdfs:subClassOf :DataByDiscretness .
+              rdfs:subClassOf :DataByDiscretness ;
+              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_be8592a7_68d1_4a06_ad23_82f2b56ef926> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#DoubleData
@@ -742,11 +728,17 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_f8bd64d5_5d3e_4ad4_a46e_c30714fecb7f> .
 
 
-###  https://w3id.org/emmo/emmo-lite#IntentionalProcess
-:IntentionalProcess rdf:type owl:Class ;
-                    rdfs:subClassOf :Process ,
-                                    :Whole ;
-                    rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_bafc17b5_9be4_4823_8bbe_ab4e90b6738c> .
+###  https://w3id.org/emmo/emmo-lite#IntentionalAgency
+:IntentionalAgency rdf:type owl:Class ;
+                   rdfs:subClassOf :Agency ,
+                                   :Process ;
+                   rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_bafc17b5_9be4_4823_8bbe_ab4e90b6738c> .
+
+
+###  https://w3id.org/emmo/emmo-lite#IntentionalAgent
+:IntentionalAgent rdf:type owl:Class ;
+                  rdfs:subClassOf :Agent ;
+                  rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_c130614a_2985_476d_a7ed_8a137847703c> .
 
 
 ###  https://w3id.org/emmo/emmo-lite#Interpreter
