@@ -173,6 +173,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#hasInterpreter
 :hasInterpreter rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :semioticOvercross ;
+                owl:inverseOf :isInterpreterFor ;
                 rdfs:domain :Semiosis ;
                 rdfs:range :Interpreter .
 
@@ -219,6 +220,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#hasReferent
 :hasReferent rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf :semioticOvercross ;
+             owl:inverseOf :isReferentFor ;
              rdfs:domain :Semiosis ;
              rdfs:range :Referent .
 
@@ -226,6 +228,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#hasSign
 :hasSign rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :semioticOvercross ;
+         owl:inverseOf :isSignFor ;
          rdfs:domain :Semiosis ;
          rdfs:range :Sign .
 
@@ -369,6 +372,11 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
                  rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_4832e353_6a2d_4deb_9a5b_96989afaff2d> .
 
 
+###  https://w3id.org/emmo/emmo-lite#isInterpreterFor
+:isInterpreterFor rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :semioticOvercrossedBy .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isOutputOf
 :isOutputOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :properOverlaps ;
@@ -410,6 +418,11 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
               rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b3ddad94_ef7e_4b97_8329_9e7c788dd94d> .
 
 
+###  https://w3id.org/emmo/emmo-lite#isReferentFor
+:isReferentFor rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :semioticOvercrossedBy .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isRemovedfrom
 :isRemovedfrom rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :partakesIn ;
@@ -431,6 +444,11 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
                          rdfs:subPropertyOf owl:topObjectProperty ;
                          rdf:type owl:SymmetricProperty ;
                          rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_2337e25c_3c60_43fc_a8f9_b11a3f974291> .
+
+
+###  https://w3id.org/emmo/emmo-lite#isSignFor
+:isSignFor rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :semioticOvercrossedBy .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isStageOf
@@ -514,7 +532,15 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#semioticOvercross
 :semioticOvercross rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :overcrosses .
+                   rdfs:subPropertyOf :isSemioticallyRelatedTo ,
+                                      :overcrosses ;
+                   owl:inverseOf :semioticOvercrossedBy .
+
+
+###  https://w3id.org/emmo/emmo-lite#semioticOvercrossedBy
+:semioticOvercrossedBy rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :isOvercrossedBy ,
+                                          :isSemioticallyRelatedTo .
 
 
 ###  https://w3id.org/emmo/emmo-lite#standsFor
