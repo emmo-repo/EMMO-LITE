@@ -7,7 +7,7 @@
 @base <https://w3id.org/emmo/emmo-lite#> .
 
 <https://w3id.org/emmo/emmo-lite> rdf:type owl:Ontology ;
-                                   owl:versionIRI <https://w3id.org/emmo/emmo-lite/0.0.3> ;
+                                   owl:versionIRI <https://w3id.org/emmo/emmo-lite/0.0.4> ;
                                    <http://purl.org/dc/terms/abstract> "A collection of all the EMMO reference level ontology modules"@en ,
                                                                        """A lightweight version of the EMMO, exposing the most common classes and relations for practical use in the development of application ontologies, using human-readable IRIs.
 EMMO-LITE expressivity is limited to RDFS+ for increased portability.
@@ -16,7 +16,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
                                    <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/legalcode" ;
                                    <http://purl.org/dc/terms/publisher> <https://emmc.eu> ;
                                    <http://purl.org/dc/terms/title> "EMMO-LITE"@en ;
-                                   owl:versionInfo "0.0.3"@en .
+                                   owl:versionInfo "0.0.4"@en .
 
 #################################################################
 #    Annotation properties
@@ -53,6 +53,9 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#affects
 :affects rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :properOverlaps ;
+         owl:inverseOf :isAffectedBy ;
+         rdf:type owl:AsymmetricProperty ,
+                  owl:IrreflexiveProperty ;
          rdfs:domain :Process ;
          rdfs:range :Object .
 
@@ -82,22 +85,11 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#contributesTo
 :contributesTo rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :properOverlaps ;
+               owl:inverseOf :isContributedBy ;
+               rdf:type owl:AsymmetricProperty ,
+                        owl:IrreflexiveProperty ;
                rdfs:domain :Process ;
                rdfs:range :Process .
-
-
-###  https://w3id.org/emmo/emmo-lite#disappearsInto
-:disappearsInto rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :affects ;
-                rdfs:domain :Process ;
-                rdfs:range :Object .
-
-
-###  https://w3id.org/emmo/emmo-lite#emergesFrom
-:emergesFrom rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :affects ;
-             rdfs:domain :Process ;
-             rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-lite#follows
@@ -167,6 +159,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 :hasInput rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :properOverlaps ;
           owl:inverseOf :isInputOf ;
+          rdf:type owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty ;
           rdfs:domain :Process .
 
 
@@ -182,6 +176,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 :hasOutput rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :properOverlaps ;
            owl:inverseOf :isOutputOf ;
+           rdf:type owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty ;
            rdfs:domain :Process .
 
 
@@ -204,7 +200,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 :hasProperPart rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :hasPart ,
                                   :overcrosses ;
-               owl:inverseOf :isProperPartOF ;
+               owl:inverseOf :isProperPartOf ;
                rdf:type owl:AsymmetricProperty ;
                rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_9380ab64_0363_4804_b13f_3a8a94119a76> .
 
@@ -274,11 +270,11 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
             rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_cd9a3a58_dabc_4c46_9ea4_03ca000b2022> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isAddedTo
-:isAddedTo rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :partakesIn ;
-           rdfs:domain :Object ;
-           rdfs:range :Object .
+###  https://w3id.org/emmo/emmo-lite#isAffectedBy
+:isAffectedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :properOverlaps ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isAfter
@@ -298,7 +294,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#isBehaviourOf
 :isBehaviourOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :isProperPartOF ;
+               rdfs:subPropertyOf :isProperPartOf ;
                rdfs:domain :Behaviour ;
                rdfs:range :Object .
 
@@ -326,16 +322,23 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#isConstituentOf
 :isConstituentOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isProperPartOF ;
+                 rdfs:subPropertyOf :isProperPartOf ;
                  rdfs:domain :Constituent ;
                  rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isConstitutiveProcessOf
 :isConstitutiveProcessOf rdf:type owl:ObjectProperty ;
-                         rdfs:subPropertyOf :isProperPartOF ;
+                         rdfs:subPropertyOf :isProperPartOf ;
                          rdfs:domain :ConstitutiveProcess ;
                          rdfs:range :Object .
+
+
+###  https://w3id.org/emmo/emmo-lite#isContributedBy
+:isContributedBy rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :properOverlaps ;
+                 rdf:type owl:AsymmetricProperty ,
+                          owl:IrreflexiveProperty .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isDatumOf
@@ -352,6 +355,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#isInputOf
 :isInputOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :properOverlaps ;
+           rdf:type owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty ;
            rdfs:range :Process .
 
 
@@ -377,9 +382,27 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
                   rdfs:subPropertyOf :semioticOvercrossedBy .
 
 
+###  https://w3id.org/emmo/emmo-lite#isJoinedBy
+:isJoinedBy rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :properOverlaps ;
+            owl:inverseOf :joins ;
+            rdf:type owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty .
+
+
+###  https://w3id.org/emmo/emmo-lite#isLeftBy
+:isLeftBy rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :properOverlaps ;
+          owl:inverseOf :leaves ;
+          rdf:type owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isOutputOf
 :isOutputOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :properOverlaps ;
+            rdf:type owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty ;
             rdfs:range :Process .
 
 
@@ -396,15 +419,31 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_a8bd7094_6b40_47af_b1f4_a69d81a3afbd> .
 
 
+###  https://w3id.org/emmo/emmo-lite#isPartakenBy
+:isPartakenBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :properOverlaps ;
+              owl:inverseOf :partakesIn ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty .
+
+
 ###  https://w3id.org/emmo/emmo-lite#isParticipantOf
 :isParticipantOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isProperPartOF ;
+                 rdfs:subPropertyOf :isProperPartOf ;
                  rdfs:domain :Participant ;
                  rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#isProperPartOF
-:isProperPartOF rdf:type owl:ObjectProperty ;
+###  https://w3id.org/emmo/emmo-lite#isParticipatedBy
+:isParticipatedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :properOverlaps ;
+                  owl:inverseOf :participatesTo ;
+                  rdf:type owl:AsymmetricProperty ,
+                           owl:IrreflexiveProperty .
+
+
+###  https://w3id.org/emmo/emmo-lite#isProperPartOf
+:isProperPartOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isOvercrossedBy ,
                                    :isPartOf ;
                 rdf:type owl:AsymmetricProperty ;
@@ -421,13 +460,6 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#isReferentFor
 :isReferentFor rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :semioticOvercrossedBy .
-
-
-###  https://w3id.org/emmo/emmo-lite#isRemovedfrom
-:isRemovedfrom rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :partakesIn ;
-               rdfs:domain :Object ;
-               rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isRepresentedBy
@@ -453,30 +485,46 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 
 ###  https://w3id.org/emmo/emmo-lite#isStageOf
 :isStageOf rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :isProperPartOF ;
+           rdfs:subPropertyOf :isProperPartOf ;
            rdfs:domain :Stage ;
            rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isStatusOf
 :isStatusOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :isProperPartOF ;
+            rdfs:subPropertyOf :isProperPartOf ;
             rdfs:domain :Status ;
             rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isSubObjectOf
 :isSubObjectOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :isProperPartOF ;
+               rdfs:subPropertyOf :isProperPartOf ;
                rdfs:domain :SubObject ;
                rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-lite#isSubProcessOf
 :isSubProcessOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :isProperPartOF ;
+                rdfs:subPropertyOf :isProperPartOf ;
                 rdfs:domain :SubProcess ;
                 rdfs:range :Process .
+
+
+###  https://w3id.org/emmo/emmo-lite#joins
+:joins rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf :properOverlaps ;
+       rdf:type owl:AsymmetricProperty ,
+                owl:IrreflexiveProperty ;
+       rdfs:range :Object .
+
+
+###  https://w3id.org/emmo/emmo-lite#leaves
+:leaves rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :properOverlaps ;
+        rdf:type owl:AsymmetricProperty ,
+                 owl:IrreflexiveProperty ;
+        rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-lite#overcrosses
@@ -495,6 +543,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#partakesIn
 :partakesIn rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :properOverlaps ;
+            rdf:type owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty ;
             rdfs:domain :Object ;
             rdfs:range :Object .
 
@@ -502,6 +552,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#participatesTo
 :participatesTo rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :properOverlaps ;
+                rdf:type owl:AsymmetricProperty ,
+                         owl:IrreflexiveProperty ;
                 rdfs:domain :Object ;
                 rdfs:range :Process .
 
@@ -518,7 +570,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 :properOverlaps rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isOvercrossedBy ,
                                    :overcrosses ;
-                rdf:type owl:SymmetricProperty ;
+                rdf:type owl:SymmetricProperty ,
+                         owl:IrreflexiveProperty ;
                 rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
 
 
