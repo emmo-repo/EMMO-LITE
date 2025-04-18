@@ -42,6 +42,10 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 <http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#example
+<http://www.w3.org/2004/02/skos/core#example> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#prefLabel
 <http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
 
@@ -619,6 +623,13 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 :dataValue rdf:type owl:DatatypeProperty ;
            rdfs:domain :Data ;
            rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c> .
+
+
+###  https://w3id.org/emmo/emmo-lite#referenceUnit
+:referenceUnit rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdfs:comment "A simple alternative to more sofisticated ontological apporaches to measurement units, where a user can provide a string with the reference unit for a particular physical property data individual without strict syntactic constraints."@en ;
+               <http://www.w3.org/2004/02/skos/core#example> "kg/m s" .
 
 
 #################################################################
