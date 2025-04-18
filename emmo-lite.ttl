@@ -615,10 +615,10 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 #    Data properties
 #################################################################
 
-###  https://w3id.org/emmo/emmo-lite#hasDataValue
-:hasDataValue rdf:type owl:DatatypeProperty ;
-              rdfs:domain :Data ;
-              rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c> .
+###  https://w3id.org/emmo/emmo-lite#dataValue
+:dataValue rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Data ;
+           rdfs:isDefinedBy <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c> .
 
 
 #################################################################
@@ -1072,63 +1072,63 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 #################################################################
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom xsd:boolean ;
   rdfs:subClassOf :BooleanData
 ] .
 
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom xsd:dateTime ;
   rdfs:subClassOf :DateTimeData
 ] .
 
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom xsd:decimal ;
   rdfs:subClassOf :DecimalData
 ] .
 
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom xsd:double ;
   rdfs:subClassOf :DoubleData
 ] .
 
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom xsd:float ;
   rdfs:subClassOf :FloatData
 ] .
 
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom xsd:integer ;
   rdfs:subClassOf :IntegerData
 ] .
 
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom xsd:string ;
   rdfs:subClassOf :StringData
 ] .
 
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom owl:rational ;
   rdfs:subClassOf :RationalData
 ] .
 
 
 [ rdf:type owl:Restriction ;
-  owl:onProperty :hasDataValue ;
+  owl:onProperty :dataValue ;
   owl:someValuesFrom owl:real ;
   rdfs:subClassOf :RealData
 ] .
