@@ -628,7 +628,8 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using rdf
 ###  https://w3id.org/emmo/emmo-lite#referenceUnit
 :referenceUnit rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:comment "A simple alternative to more sofisticated ontological apporaches to measurement units, where a user can provide a string with the reference unit for a particular physical property data individual without strict syntactic constraints."@en ;
+               rdfs:comment """A simple alternative to more sofisticated ontological apporaches to measurement units, where a user can provide a string with the reference unit for a particular physical property data individual without strict syntactic constraints.
+Units must be written according to  section 5.2 SI Brochure rules: https://www.bipm.org/documents/20126/41483022/SI-Brochure-9.pdf/fcf090b2-04e6-88cc-1149-c3e029ad8232"""@en ;
                <http://www.w3.org/2004/02/skos/core#example> "kg/m s" .
 
 
