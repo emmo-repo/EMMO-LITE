@@ -4,7 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://w3id.org/emmo/emmo-lite#> .
+@base <https://w3id.org/emmo/emmo-for-humans#> .
 
 <https://w3id.org/emmo/emmo-lite> rdf:type owl:Ontology ;
                                    owl:versionIRI <https://w3id.org/emmo/emmo-lite/0.0.5> ;
@@ -16,6 +16,27 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                                    <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/legalcode" ;
                                    <http://purl.org/dc/terms/publisher> <https://emmc.eu> ;
                                    <http://purl.org/dc/terms/title> "EMMO-LITE"@en ;
+                                   rdfs:comment """EMMO-LITE is a subset of classes, properties and axioms of EMMO for Humans.
+
+EMMO-LITE is designed for RDFS+ reasoning, using the following constructs:
+rdfs:subClassOf
+rdfs:subPropertyOf
+rdfs:domain
+rdfs:range
+rdfs:label
+rdfs:comment
+owl:equivalentClass
+owl:equivalentProperty
+owl:sameAs
+inverseOf
+TransitiveProperty
+SymmetricProperty
+AsymmetricProperty
+IrreflexiveProperty
+FunctionalProperty
+InverseFunctionalProperty
+ObjectProperty
+DatatypeProperty"""@en ;
                                    owl:versionInfo "0.0.5"@en .
 
 #################################################################
@@ -42,6 +63,10 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
 <http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#exactMatch
+<http://www.w3.org/2004/02/skos/core#exactMatch> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#example
 <http://www.w3.org/2004/02/skos/core#example> rdf:type owl:AnnotationProperty .
 
@@ -54,7 +79,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/emmo/emmo-lite#affects
+###  https://w3id.org/emmo/emmo-for-humans#affects
 :affects rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :properOverlaps ;
          owl:inverseOf :isAffectedBy ;
@@ -64,29 +89,15 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
          rdfs:range :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#alongsideWith
-:alongsideWith rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :coexistsWith ;
-               rdf:type owl:SymmetricProperty ;
-               skos:exactMatch <https://w3id.org/emmo#EMMO_d01b3ee2_91a5_4ce2_95cd_f0d2c333c6d3> .
-
-
-###  https://w3id.org/emmo/emmo-lite#coexistsWith
+###  https://w3id.org/emmo/emmo-for-humans#coexistsWith
 :coexistsWith rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :isCauseOf ,
                                  :isCausedBy ;
               rdf:type owl:SymmetricProperty ;
-              skos:exactMatch <https://w3id.org/emmo#EMMO_54d0d0f4_d9fa_4179_a9b5_4110c49dafff> .
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_54d0d0f4_d9fa_4179_a9b5_4110c49dafff> .
 
 
-###  https://w3id.org/emmo/emmo-lite#contacts
-:contacts rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :coexistsWith ;
-          rdf:type owl:SymmetricProperty ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_8785be5a_2493_4b12_8f39_31907ab11748> .
-
-
-###  https://w3id.org/emmo/emmo-lite#contributesTo
+###  https://w3id.org/emmo/emmo-for-humans#contributesTo
 :contributesTo rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :properOverlaps ;
                owl:inverseOf :isContributedBy ;
@@ -96,22 +107,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#follows
-:follows rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :isAfter ;
-         owl:inverseOf :foregoes ;
-         rdf:type owl:AsymmetricProperty ;
-         skos:exactMatch <https://w3id.org/emmo#EMMO_60c57607_c9e7_4e75_a3d1_7a1f1f9928e4> .
-
-
-###  https://w3id.org/emmo/emmo-lite#foregoes
-:foregoes rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :isBefore ;
-          rdf:type owl:AsymmetricProperty ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_499e24a5_5072_4c83_8625_fe3f96ae4a8d> .
-
-
-###  https://w3id.org/emmo/emmo-lite#hasBehaviour
+###  https://w3id.org/emmo/emmo-for-humans#hasBehaviour
 :hasBehaviour rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :hasProperPart ;
               owl:inverseOf :isBehaviourOf ;
@@ -119,16 +115,16 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
               rdfs:range :Behaviour .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasComponent
+###  https://w3id.org/emmo/emmo-for-humans#hasComponent
 :hasComponent rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :hasConstituent ;
               owl:inverseOf :isComponentOf ;
               rdfs:domain :System ;
               rdfs:range :Component ;
-              skos:exactMatch <https://w3id.org/emmo#EMMO_3c7f239f_e833_4a2b_98a1_c88831770c1b> .
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_3c7f239f_e833_4a2b_98a1_c88831770c1b> .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasConstituent
+###  https://w3id.org/emmo/emmo-for-humans#hasConstituent
 :hasConstituent rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :hasProperPart ;
                 owl:inverseOf :isConstituentOf ;
@@ -136,7 +132,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                 rdfs:range :Constituent .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasConstitutiveProcess
+###  https://w3id.org/emmo/emmo-for-humans#hasConstitutiveProcess
 :hasConstitutiveProcess rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf :hasProperPart ;
                         owl:inverseOf :isConstitutiveProcessOf ;
@@ -144,7 +140,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                         rdfs:range :ConstitutiveProcess .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasDatum
+###  https://w3id.org/emmo/emmo-for-humans#hasDatum
 :hasDatum rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :hasPart ;
           owl:inverseOf :isDatumOf ;
@@ -152,14 +148,14 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
           rdfs:range :Datum .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasDescription
+###  https://w3id.org/emmo/emmo-for-humans#hasDescription
 :hasDescription rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isRepresentedBy ;
                 owl:inverseOf :isDescriptionOf ;
-                skos:exactMatch <https://w3id.org/emmo#EMMO_c58c799e_cc6c_4310_a3f1_78da70705b2a> .
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_c58c799e_cc6c_4310_a3f1_78da70705b2a> .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasInput
+###  https://w3id.org/emmo/emmo-for-humans#hasInput
 :hasInput rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :properOverlaps ;
           owl:inverseOf :isInputOf ;
@@ -168,7 +164,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
           rdfs:domain :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasInterpreter
+###  https://w3id.org/emmo/emmo-for-humans#hasInterpreter
 :hasInterpreter rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :semioticOvercross ;
                 owl:inverseOf :isInterpreterFor ;
@@ -176,7 +172,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                 rdfs:range :Interpreter .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasOutput
+###  https://w3id.org/emmo/emmo-for-humans#hasOutput
 :hasOutput rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :properOverlaps ;
            owl:inverseOf :isOutputOf ;
@@ -185,14 +181,14 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
            rdfs:domain :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasPart
+###  https://w3id.org/emmo/emmo-for-humans#hasPart
 :hasPart rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :overlaps ;
          owl:inverseOf :isPartOf ;
-         skos:exactMatch <https://w3id.org/emmo#EMMO_17e27c22_37e1_468c_9dd7_95e137f73e7f> .
+         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_17e27c22_37e1_468c_9dd7_95e137f73e7f> .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasParticipant
+###  https://w3id.org/emmo/emmo-for-humans#hasParticipant
 :hasParticipant rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :hasProperPart ;
                 owl:inverseOf :isParticipantOf ;
@@ -200,24 +196,24 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                 rdfs:range :Participant .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasProperPart
+###  https://w3id.org/emmo/emmo-for-humans#hasProperPart
 :hasProperPart rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :hasPart ,
                                   :overcrosses ;
                owl:inverseOf :isProperPartOf ;
                rdf:type owl:AsymmetricProperty ;
-               skos:exactMatch <https://w3id.org/emmo#EMMO_9380ab64_0363_4804_b13f_3a8a94119a76> .
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9380ab64_0363_4804_b13f_3a8a94119a76> .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasProperty
+###  https://w3id.org/emmo/emmo-for-humans#hasProperty
 :hasProperty rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf :isRepresentedBy ;
              owl:inverseOf :isPropertyOf ;
              rdfs:range :Property ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_e1097637_70d2_4895_973f_2396f04fa204> .
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e1097637_70d2_4895_973f_2396f04fa204> .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasReferent
+###  https://w3id.org/emmo/emmo-for-humans#hasReferent
 :hasReferent rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf :semioticOvercross ;
              owl:inverseOf :isReferentFor ;
@@ -225,7 +221,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
              rdfs:range :Referent .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasSign
+###  https://w3id.org/emmo/emmo-for-humans#hasSign
 :hasSign rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :semioticOvercross ;
          owl:inverseOf :isSignFor ;
@@ -233,7 +229,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
          rdfs:range :Sign .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasStage
+###  https://w3id.org/emmo/emmo-for-humans#hasStage
 :hasStage rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :hasProperPart ;
           owl:inverseOf :isStageOf ;
@@ -241,7 +237,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
           rdfs:range :Stage .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasStatus
+###  https://w3id.org/emmo/emmo-for-humans#hasStatus
 :hasStatus rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :hasProperPart ;
            owl:inverseOf :isStatusOf ;
@@ -249,7 +245,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
            rdfs:range :Status .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasSubObject
+###  https://w3id.org/emmo/emmo-for-humans#hasSubObject
 :hasSubObject rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :hasProperPart ;
               owl:inverseOf :isSubObjectOf ;
@@ -257,7 +253,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
               rdfs:range :SubObject .
 
 
-###  https://w3id.org/emmo/emmo-lite#hasSubProcess
+###  https://w3id.org/emmo/emmo-for-humans#hasSubProcess
 :hasSubProcess rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :hasProperPart ;
                owl:inverseOf :isSubProcessOf ;
@@ -265,98 +261,99 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                rdfs:range :SubProcess .
 
 
-###  https://w3id.org/emmo/emmo-lite#interprets
+###  https://w3id.org/emmo/emmo-for-humans#interprets
 :interprets rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :isSemioticallyRelatedTo ;
             owl:inverseOf :isInterpretedBy ;
             rdfs:domain :Interpreter ;
             rdfs:range :Sign ;
-            skos:exactMatch <https://w3id.org/emmo#EMMO_cd9a3a58_dabc_4c46_9ea4_03ca000b2022> .
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_cd9a3a58_dabc_4c46_9ea4_03ca000b2022> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isAffectedBy
+###  https://w3id.org/emmo/emmo-for-humans#isAffectedBy
 :isAffectedBy rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :properOverlaps ;
               rdf:type owl:AsymmetricProperty ,
                        owl:IrreflexiveProperty .
 
 
-###  https://w3id.org/emmo/emmo-lite#isAfter
+###  https://w3id.org/emmo/emmo-for-humans#isAfter
 :isAfter rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :isCausedBy ;
          owl:inverseOf :isBefore ;
          rdf:type owl:AsymmetricProperty ;
-         skos:exactMatch <https://w3id.org/emmo#EMMO_2a28c0dd_89b1_47ac_b81f_fccc56f39617> .
+         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2a28c0dd_89b1_47ac_b81f_fccc56f39617> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isBefore
+###  https://w3id.org/emmo/emmo-for-humans#isBefore
 :isBefore rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :isCauseOf ;
           rdf:type owl:AsymmetricProperty ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_ebc9e62c_5dc4_44db_9060_7923740bdf78> .
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_ebc9e62c_5dc4_44db_9060_7923740bdf78> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isBehaviourOf
+###  https://w3id.org/emmo/emmo-for-humans#isBehaviourOf
 :isBehaviourOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :isProperPartOf ;
                rdfs:domain :Behaviour ;
                rdfs:range :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#isCauseOf
+###  https://w3id.org/emmo/emmo-for-humans#isCauseOf
 :isCauseOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
            owl:inverseOf :isCausedBy ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_d67ee67e_4fac_4676_82c9_aec361dba698> .
+           rdf:type owl:IrreflexiveProperty ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d67ee67e_4fac_4676_82c9_aec361dba698> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isCausedBy
+###  https://w3id.org/emmo/emmo-for-humans#isCausedBy
 :isCausedBy rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             rdf:type owl:IrreflexiveProperty ;
-            skos:exactMatch <https://w3id.org/emmo#EMMO_6735d3ff_67f8_43b5_b5b0_240fbfab4517> .
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_6735d3ff_67f8_43b5_b5b0_240fbfab4517> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isComponentOf
+###  https://w3id.org/emmo/emmo-for-humans#isComponentOf
 :isComponentOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :isConstituentOf ;
                rdfs:domain :Component ;
                rdfs:range :System .
 
 
-###  https://w3id.org/emmo/emmo-lite#isConstituentOf
+###  https://w3id.org/emmo/emmo-for-humans#isConstituentOf
 :isConstituentOf rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isProperPartOf ;
                  rdfs:domain :Constituent ;
                  rdfs:range :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#isConstitutiveProcessOf
+###  https://w3id.org/emmo/emmo-for-humans#isConstitutiveProcessOf
 :isConstitutiveProcessOf rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf :isProperPartOf ;
                          rdfs:domain :ConstitutiveProcess ;
                          rdfs:range :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#isContributedBy
+###  https://w3id.org/emmo/emmo-for-humans#isContributedBy
 :isContributedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :properOverlaps ;
                  rdf:type owl:AsymmetricProperty ,
                           owl:IrreflexiveProperty .
 
 
-###  https://w3id.org/emmo/emmo-lite#isDatumOf
+###  https://w3id.org/emmo/emmo-for-humans#isDatumOf
 :isDatumOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :isPartOf .
 
 
-###  https://w3id.org/emmo/emmo-lite#isDescriptionOf
+###  https://w3id.org/emmo/emmo-for-humans#isDescriptionOf
 :isDescriptionOf rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :standsFor ;
-                 skos:exactMatch <https://w3id.org/emmo#EMMO_f702bad4_fc77_41f0_a26d_79f6444fd4f3> .
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f702bad4_fc77_41f0_a26d_79f6444fd4f3> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isInputOf
+###  https://w3id.org/emmo/emmo-for-humans#isInputOf
 :isInputOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :properOverlaps ;
            rdf:type owl:AsymmetricProperty ,
@@ -364,29 +361,29 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
            rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#isInterpretationAccordingTo
+###  https://w3id.org/emmo/emmo-for-humans#isInterpretationAccordingTo
 :isInterpretationAccordingTo rdf:type owl:ObjectProperty ;
                              rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                              owl:inverseOf :providesInterpretation ;
                              rdfs:domain :Referent ;
                              rdfs:range :Interpreter ;
-                             skos:exactMatch <https://w3id.org/emmo#EMMO_0ed18c6b_8289_44fd_a7d7_c15a8786cdc0> .
+                             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0ed18c6b_8289_44fd_a7d7_c15a8786cdc0> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isInterpretedBy
+###  https://w3id.org/emmo/emmo-for-humans#isInterpretedBy
 :isInterpretedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                  rdfs:domain :Sign ;
                  rdfs:range :Interpreter ;
-                 skos:exactMatch <https://w3id.org/emmo#EMMO_4832e353_6a2d_4deb_9a5b_96989afaff2d> .
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4832e353_6a2d_4deb_9a5b_96989afaff2d> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isInterpreterFor
+###  https://w3id.org/emmo/emmo-for-humans#isInterpreterFor
 :isInterpreterFor rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :semioticOvercrossedBy .
 
 
-###  https://w3id.org/emmo/emmo-lite#isJoinedBy
+###  https://w3id.org/emmo/emmo-for-humans#isJoinedBy
 :isJoinedBy rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :properOverlaps ;
             owl:inverseOf :joins ;
@@ -394,7 +391,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                      owl:IrreflexiveProperty .
 
 
-###  https://w3id.org/emmo/emmo-lite#isLeftBy
+###  https://w3id.org/emmo/emmo-for-humans#isLeftBy
 :isLeftBy rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :properOverlaps ;
           owl:inverseOf :leaves ;
@@ -402,7 +399,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                    owl:IrreflexiveProperty .
 
 
-###  https://w3id.org/emmo/emmo-lite#isOutputOf
+###  https://w3id.org/emmo/emmo-for-humans#isOutputOf
 :isOutputOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :properOverlaps ;
             rdf:type owl:AsymmetricProperty ,
@@ -410,20 +407,20 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
             rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#isOvercrossedBy
+###  https://w3id.org/emmo/emmo-for-humans#isOvercrossedBy
 :isOvercrossedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :overlaps ;
                  owl:inverseOf :overcrosses ;
-                 skos:exactMatch <https://w3id.org/emmo#EMMO_e4f66254_7312_4de5_a86a_6e0808baaaab> .
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e4f66254_7312_4de5_a86a_6e0808baaaab> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isPartOf
+###  https://w3id.org/emmo/emmo-for-humans#isPartOf
 :isPartOf rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :overlaps ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_a8bd7094_6b40_47af_b1f4_a69d81a3afbd> .
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a8bd7094_6b40_47af_b1f4_a69d81a3afbd> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isPartakenBy
+###  https://w3id.org/emmo/emmo-for-humans#isPartakenBy
 :isPartakenBy rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :properOverlaps ;
               owl:inverseOf :partakesIn ;
@@ -431,14 +428,14 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                        owl:IrreflexiveProperty .
 
 
-###  https://w3id.org/emmo/emmo-lite#isParticipantOf
+###  https://w3id.org/emmo/emmo-for-humans#isParticipantOf
 :isParticipantOf rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isProperPartOf ;
                  rdfs:domain :Participant ;
                  rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#isParticipatedBy
+###  https://w3id.org/emmo/emmo-for-humans#isParticipatedBy
 :isParticipatedBy rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :properOverlaps ;
                   owl:inverseOf :participatesTo ;
@@ -446,76 +443,76 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                            owl:IrreflexiveProperty .
 
 
-###  https://w3id.org/emmo/emmo-lite#isProperPartOf
+###  https://w3id.org/emmo/emmo-for-humans#isProperPartOf
 :isProperPartOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isOvercrossedBy ,
                                    :isPartOf ;
                 rdf:type owl:AsymmetricProperty ;
-                skos:exactMatch <https://w3id.org/emmo#EMMO_559ab98c_1c7d_4794_996c_8c1d8d56381c> .
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_559ab98c_1c7d_4794_996c_8c1d8d56381c> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isPropertyOf
+###  https://w3id.org/emmo/emmo-for-humans#isPropertyOf
 :isPropertyOf rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :standsFor ;
               rdfs:domain :Property ;
-              skos:exactMatch <https://w3id.org/emmo#EMMO_b3ddad94_ef7e_4b97_8329_9e7c788dd94d> .
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b3ddad94_ef7e_4b97_8329_9e7c788dd94d> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isReferentFor
+###  https://w3id.org/emmo/emmo-for-humans#isReferentFor
 :isReferentFor rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :semioticOvercrossedBy .
 
 
-###  https://w3id.org/emmo/emmo-lite#isRepresentedBy
+###  https://w3id.org/emmo/emmo-for-humans#isRepresentedBy
 :isRepresentedBy rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                  owl:inverseOf :standsFor ;
                  rdfs:domain :Referent ;
                  rdfs:range :Sign ;
-                 skos:exactMatch <https://w3id.org/emmo#EMMO_60577dea_9019_4537_ac41_80b0fb563d41> .
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_60577dea_9019_4537_ac41_80b0fb563d41> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isSemioticallyRelatedTo
+###  https://w3id.org/emmo/emmo-for-humans#isSemioticallyRelatedTo
 :isSemioticallyRelatedTo rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf owl:topObjectProperty ;
                          rdf:type owl:SymmetricProperty ;
-                         skos:exactMatch <https://w3id.org/emmo#EMMO_2337e25c_3c60_43fc_a8f9_b11a3f974291> .
+                         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2337e25c_3c60_43fc_a8f9_b11a3f974291> .
 
 
-###  https://w3id.org/emmo/emmo-lite#isSignFor
+###  https://w3id.org/emmo/emmo-for-humans#isSignFor
 :isSignFor rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :semioticOvercrossedBy .
 
 
-###  https://w3id.org/emmo/emmo-lite#isStageOf
+###  https://w3id.org/emmo/emmo-for-humans#isStageOf
 :isStageOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :isProperPartOf ;
            rdfs:domain :Stage ;
            rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#isStatusOf
+###  https://w3id.org/emmo/emmo-for-humans#isStatusOf
 :isStatusOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :isProperPartOf ;
             rdfs:domain :Status ;
             rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#isSubObjectOf
+###  https://w3id.org/emmo/emmo-for-humans#isSubObjectOf
 :isSubObjectOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :isProperPartOf ;
                rdfs:domain :SubObject ;
                rdfs:range :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#isSubProcessOf
+###  https://w3id.org/emmo/emmo-for-humans#isSubProcessOf
 :isSubProcessOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isProperPartOf ;
                 rdfs:domain :SubProcess ;
                 rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#joins
+###  https://w3id.org/emmo/emmo-for-humans#joins
 :joins rdf:type owl:ObjectProperty ;
        rdfs:subPropertyOf :properOverlaps ;
        rdf:type owl:AsymmetricProperty ,
@@ -523,7 +520,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
        rdfs:range :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#leaves
+###  https://w3id.org/emmo/emmo-for-humans#leaves
 :leaves rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :properOverlaps ;
         rdf:type owl:AsymmetricProperty ,
@@ -531,20 +528,20 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
         rdfs:range :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#overcrosses
+###  https://w3id.org/emmo/emmo-for-humans#overcrosses
 :overcrosses rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf :overlaps ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_9cb984ca_48ad_4864_b09e_50d3fff19420> .
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9cb984ca_48ad_4864_b09e_50d3fff19420> .
 
 
-###  https://w3id.org/emmo/emmo-lite#overlaps
+###  https://w3id.org/emmo/emmo-for-humans#overlaps
 :overlaps rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
           rdf:type owl:SymmetricProperty ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_d893d373_b579_4867_841e_1c2b31a8d2c6> .
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d893d373_b579_4867_841e_1c2b31a8d2c6> .
 
 
-###  https://w3id.org/emmo/emmo-lite#partakesIn
+###  https://w3id.org/emmo/emmo-for-humans#partakesIn
 :partakesIn rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :properOverlaps ;
             rdf:type owl:AsymmetricProperty ,
@@ -553,7 +550,7 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
             rdfs:range :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#participatesTo
+###  https://w3id.org/emmo/emmo-for-humans#participatesTo
 :participatesTo rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :properOverlaps ;
                 rdf:type owl:AsymmetricProperty ,
@@ -562,70 +559,55 @@ Each EMMO-LITE ontology entity provides a reference to the EMMO entity using sko
                 rdfs:range :Process .
 
 
-###  https://w3id.org/emmo/emmo-lite#predecessorOf
-:predecessorOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :isBefore ;
-               owl:inverseOf :successorOf ;
-               rdf:type owl:AsymmetricProperty ;
-               skos:exactMatch <https://w3id.org/emmo#EMMO_3733bd38_ca2b_4264_a92a_3075a1715598> .
-
-
-###  https://w3id.org/emmo/emmo-lite#properOverlaps
+###  https://w3id.org/emmo/emmo-for-humans#properOverlaps
 :properOverlaps rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isOvercrossedBy ,
                                    :overcrosses ;
                 rdf:type owl:SymmetricProperty ,
                          owl:IrreflexiveProperty ;
-                skos:exactMatch <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
 
 
-###  https://w3id.org/emmo/emmo-lite#providesInterpretation
+###  https://w3id.org/emmo/emmo-for-humans#providesInterpretation
 :providesInterpretation rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf :isSemioticallyRelatedTo ;
                         rdfs:domain :Interpreter ;
                         rdfs:range :Referent ;
-                        skos:exactMatch <https://w3id.org/emmo#EMMO_f2fc1ce9_cc3b_4eb5_a112_3c85d1b1374a> .
+                        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f2fc1ce9_cc3b_4eb5_a112_3c85d1b1374a> .
 
 
-###  https://w3id.org/emmo/emmo-lite#semioticOvercross
+###  https://w3id.org/emmo/emmo-for-humans#semioticOvercross
 :semioticOvercross rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf :isSemioticallyRelatedTo ,
                                       :overcrosses ;
                    owl:inverseOf :semioticOvercrossedBy .
 
 
-###  https://w3id.org/emmo/emmo-lite#semioticOvercrossedBy
+###  https://w3id.org/emmo/emmo-for-humans#semioticOvercrossedBy
 :semioticOvercrossedBy rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf :isOvercrossedBy ,
                                           :isSemioticallyRelatedTo .
 
 
-###  https://w3id.org/emmo/emmo-lite#standsFor
+###  https://w3id.org/emmo/emmo-for-humans#standsFor
 :standsFor rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :isSemioticallyRelatedTo ;
            rdfs:domain :Sign ;
            rdfs:range :Referent ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_82a96de2_41aa_4bf7_b7ac_de1373d50160> .
-
-
-###  https://w3id.org/emmo/emmo-lite#successorOf
-:successorOf rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :isAfter ;
-             rdf:type owl:AsymmetricProperty ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_451e410e_8e0d_4a4b_9211_d6ef619296dc> .
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_82a96de2_41aa_4bf7_b7ac_de1373d50160> .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  https://w3id.org/emmo/emmo-lite#dataValue
+###  https://w3id.org/emmo/emmo-for-humans#dataValue
 :dataValue rdf:type owl:DatatypeProperty ;
            rdfs:domain :Data ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c> .
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c> .
 
 
-###  https://w3id.org/emmo/emmo-lite#referenceUnit
+###  https://w3id.org/emmo/emmo-for-humans#referenceUnit
 :referenceUnit rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
                rdfs:comment """A simple alternative to more sofisticated ontological apporaches to measurement units, where a user can provide a string with the reference unit for a particular physical property data individual without strict syntactic constraints.
@@ -637,50 +619,43 @@ Units must be written according to  section 5.2 SI Brochure rules: https://www.b
 #    Classes
 #################################################################
 
-###  https://w3id.org/emmo/emmo-lite#Agency
+###  https://w3id.org/emmo/emmo-for-humans#Agency
 :Agency rdf:type owl:Class ;
         rdfs:subClassOf :Whole ;
-        skos:exactMatch <https://w3id.org/emmo#EMMO_a49c2441_1e54_43f0_a1cf_2f553a23ac34> .
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a49c2441_1e54_43f0_a1cf_2f553a23ac34> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Agent
+###  https://w3id.org/emmo/emmo-for-humans#Agent
 :Agent rdf:type owl:Class ;
        rdfs:subClassOf :Participant ,
                        :Role ;
-       skos:exactMatch <https://w3id.org/emmo#EMMO_2480b72b_db8d_460f_9a5f_c2912f979046> .
+       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2480b72b_db8d_460f_9a5f_c2912f979046> .
 
 
-###  https://w3id.org/emmo/emmo-lite#AnalogData
+###  https://w3id.org/emmo/emmo-for-humans#AnalogData
 :AnalogData rdf:type owl:Class ;
             rdfs:subClassOf :DataByDiscretness ;
-            skos:exactMatch <https://w3id.org/emmo#EMMO_0d1c0018_42e2_4506_bc3d_f53c117c1ad3> .
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0d1c0018_42e2_4506_bc3d_f53c117c1ad3> .
 
 
-###  https://w3id.org/emmo/emmo-lite#ArrayData
+###  https://w3id.org/emmo/emmo-for-humans#ArrayData
 :ArrayData rdf:type owl:Class ;
-           rdfs:subClassOf :SymbolicData ;
-           owl:disjointWith :ScalarData ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_9e49caad_b29e_4cf1_9be4_80419fd1e45c> .
+           rdfs:subClassOf :DiscreteData ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9e49caad_b29e_4cf1_9be4_80419fd1e45c> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Behaviour
+###  https://w3id.org/emmo/emmo-for-humans#Behaviour
 :Behaviour rdf:type owl:Class ;
            rdfs:subClassOf :Process ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_210e7e99_c1cf_44cc_87c7_310a10ff068b> .
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_210e7e99_c1cf_44cc_87c7_310a10ff068b> .
 
 
-###  https://w3id.org/emmo/emmo-lite#BooleanData
-:BooleanData rdf:type owl:Class ;
-             rdfs:subClassOf :SymbolicData ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_54dc83cb_06e1_4739_9e45_bc09cead7f48> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Characterisation
+###  https://w3id.org/emmo/emmo-for-humans#Characterisation
 :Characterisation rdf:type owl:Class ;
                   rdfs:subClassOf :Measurement .
 
 
-###  https://w3id.org/emmo/emmo-lite#Component
+###  https://w3id.org/emmo/emmo-for-humans#Component
 :Component rdf:type owl:Class ;
            rdfs:subClassOf :Constituent ,
                            :Role ,
@@ -688,462 +663,284 @@ Units must be written according to  section 5.2 SI Brochure rules: https://www.b
                              owl:onProperty :isConstituentOf ;
                              owl:someValuesFrom :System
                            ] ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_f76884f7_964e_488e_9bb7_1b2453e9e817> .
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f76884f7_964e_488e_9bb7_1b2453e9e817> .
 
 
-###  https://w3id.org/emmo/emmo-lite#CondensedMatter
+###  https://w3id.org/emmo/emmo-for-humans#CondensedMatter
 :CondensedMatter rdf:type owl:Class ;
                  rdfs:subClassOf :StateOfMatter ;
-                 skos:exactMatch <https://w3id.org/emmo#EMMO_220b7201_d277_4dca_bf6a_5a5e2c4062dd> .
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_220b7201_d277_4dca_bf6a_5a5e2c4062dd> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Constituent
+###  https://w3id.org/emmo/emmo-for-humans#Constituent
 :Constituent rdf:type owl:Class ;
              rdfs:subClassOf :Object ;
-             skos:exactMatch "https://w3id.org/emmo#EMMO_ceaaf9f7_fd11_424b_8fda_9afa186af186"^^xsd:anyURI .
+             <http://www.w3.org/2004/02/skos/core#exactMatch> "https://w3id.org/emmo#EMMO_ceaaf9f7_fd11_424b_8fda_9afa186af186"^^xsd:anyURI .
 
 
-###  https://w3id.org/emmo/emmo-lite#ConstitutiveProcess
+###  https://w3id.org/emmo/emmo-for-humans#ConstitutiveProcess
 :ConstitutiveProcess rdf:type owl:Class ;
                      rdfs:subClassOf :Process ;
-                     skos:exactMatch <https://w3id.org/emmo#EMMO_f68858dd_64f4_4877_b7fb_70d04fbe5bab> .
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f68858dd_64f4_4877_b7fb_70d04fbe5bab> .
 
 
-###  https://w3id.org/emmo/emmo-lite#ContinuumSubstance
+###  https://w3id.org/emmo/emmo-for-humans#ContinuumSubstance
 :ContinuumSubstance rdf:type owl:Class ;
                     rdfs:subClassOf :Substance ;
-                    skos:exactMatch <https://w3id.org/emmo#EMMO_8b0923ab_b500_477b_9ce9_8b3a3e4dc4f2> .
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_8b0923ab_b500_477b_9ce9_8b3a3e4dc4f2> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Data
+###  https://w3id.org/emmo/emmo-for-humans#Data
 :Data rdf:type owl:Class ;
-      skos:exactMatch <https://w3id.org/emmo#EMMO_3e7add3d_e6ed_489a_a796_8e31fef9b490> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_3e7add3d_e6ed_489a_a796_8e31fef9b490> .
 
 
-###  https://w3id.org/emmo/emmo-lite#DataByDiscretness
+###  https://w3id.org/emmo/emmo-for-humans#DataByDiscretness
 :DataByDiscretness rdf:type owl:Class ;
                    rdfs:subClassOf :Data ;
-                   skos:exactMatch <https://w3id.org.org/emmo#EMMO_c66ad523_3937_485e_91bb_ad488ddb373f> .
+                   <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org.org/emmo#EMMO_c66ad523_3937_485e_91bb_ad488ddb373f> .
 
 
-###  https://w3id.org/emmo/emmo-lite#DataByStructure
+###  https://w3id.org/emmo/emmo-for-humans#DataByStructure
 :DataByStructure rdf:type owl:Class ;
                  rdfs:subClassOf :Data ;
-                 skos:exactMatch <https://w3id.org.org/emmo#EMMO_1a40459e_10d8_49b3_bb8c_c3595fb1d0bb> .
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org.org/emmo#EMMO_1a40459e_10d8_49b3_bb8c_c3595fb1d0bb> .
 
 
-###  https://w3id.org/emmo/emmo-lite#DataSet
+###  https://w3id.org/emmo/emmo-for-humans#DataSet
 :DataSet rdf:type owl:Class ;
          rdfs:subClassOf :DataByStructure ;
-         skos:exactMatch <https://w3id.org/emmo#EMMO_194e367c_9783_4bf5_96d0_9ad597d48d9a> .
+         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_194e367c_9783_4bf5_96d0_9ad597d48d9a> .
 
 
-###  https://w3id.org/emmo/emmo-lite#DateTimeData
-:DateTimeData rdf:type owl:Class ;
-              rdfs:subClassOf :SymbolicData ;
-              skos:exactMatch <https://w3id.org/emmo#EMMO_0e03a375_8af8_46db_88ae_a45fe2d2940f> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Datum
+###  https://w3id.org/emmo/emmo-for-humans#Datum
 :Datum rdf:type owl:Class ;
        rdfs:subClassOf :DataByStructure ;
-       skos:exactMatch <https://w3id.org/emmo#EMMO_50d6236a_7667_4883_8ae1_9bb5d190423a> .
+       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_50d6236a_7667_4883_8ae1_9bb5d190423a> .
 
 
-###  https://w3id.org/emmo/emmo-lite#DecimalData
-:DecimalData rdf:type owl:Class ;
-             rdfs:subClassOf :RationalData ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_d43546df_7fd7_44d5_9d7c_0f2bf56cefe3> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Description
+###  https://w3id.org/emmo/emmo-for-humans#Description
 :Description rdf:type owl:Class ;
              rdfs:subClassOf :Sign ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_35d4c439_fcb6_4399_a855_a89a207b41e9> .
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_35d4c439_fcb6_4399_a855_a89a207b41e9> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Device
+###  https://w3id.org/emmo/emmo-for-humans#Device
 :Device rdf:type owl:Class ;
         rdfs:subClassOf :Object .
 
 
-###  https://w3id.org/emmo/emmo-lite#DiscreteData
+###  https://w3id.org/emmo/emmo-for-humans#DiscreteData
 :DiscreteData rdf:type owl:Class ;
               rdfs:subClassOf :DataByDiscretness ;
-              skos:exactMatch <https://w3id.org/emmo#EMMO_be8592a7_68d1_4a06_ad23_82f2b56ef926> .
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_be8592a7_68d1_4a06_ad23_82f2b56ef926> .
 
 
-###  https://w3id.org/emmo/emmo-lite#DoubleData
-:DoubleData rdf:type owl:Class ;
-            rdfs:subClassOf :FloatingPointData ;
-            skos:exactMatch <https://w3id.org/emmo#EMMO_52fa9c76_fc42_4eca_a5c1_6095a1c9caab> .
-
-
-###  https://w3id.org/emmo/emmo-lite#FloatData
-:FloatData rdf:type owl:Class ;
-           rdfs:subClassOf :FloatingPointData ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_ac9e518d_b403_4d8b_97e2_06f9d40bac01> .
-
-
-###  https://w3id.org/emmo/emmo-lite#FloatingPointData
-:FloatingPointData rdf:type owl:Class ;
-                   rdfs:subClassOf :NumericData ;
-                   skos:exactMatch <https://w3id.org/emmo#EMMO_88a34881_b8d0_474b_9a08_40dbd414d834> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Fluid
+###  https://w3id.org/emmo/emmo-for-humans#Fluid
 :Fluid rdf:type owl:Class ;
        rdfs:subClassOf :StateOfMatter ;
-       skos:exactMatch <https://w3id.org/emmo#EMMO_87ac88ff_8379_4f5a_8c7b_424a8fff1ee8> .
+       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_87ac88ff_8379_4f5a_8c7b_424a8fff1ee8> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Gas
+###  https://w3id.org/emmo/emmo-for-humans#Gas
 :Gas rdf:type owl:Class ;
      rdfs:subClassOf :Fluid ;
-     skos:exactMatch <https://w3id.org/emmo#EMMO_04f2a2d5_e799_4692_a654_420e76f5acc1> .
+     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_04f2a2d5_e799_4692_a654_420e76f5acc1> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Holistic
+###  https://w3id.org/emmo/emmo-for-humans#Holistic
 :Holistic rdf:type owl:Class ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_0277f24a_ea7f_4917_81b7_fb0406c8fc62> .
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0277f24a_ea7f_4917_81b7_fb0406c8fc62> .
 
 
-###  https://w3id.org/emmo/emmo-lite#IRI
-:IRI rdf:type owl:Class ;
-     rdfs:subClassOf :URI .
-
-
-###  https://w3id.org/emmo/emmo-lite#IntegerData
-:IntegerData rdf:type owl:Class ;
-             rdfs:subClassOf :DecimalData ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_f8bd64d5_5d3e_4ad4_a46e_c30714fecb7f> .
-
-
-###  https://w3id.org/emmo/emmo-lite#IntentionalAgency
-:IntentionalAgency rdf:type owl:Class ;
-                   rdfs:subClassOf :Agency ,
-                                   :Process ;
-                   skos:exactMatch <https://w3id.org/emmo#EMMO_bafc17b5_9be4_4823_8bbe_ab4e90b6738c> .
-
-
-###  https://w3id.org/emmo/emmo-lite#IntentionalAgent
-:IntentionalAgent rdf:type owl:Class ;
-                  rdfs:subClassOf :Agent ;
-                  skos:exactMatch <https://w3id.org/emmo#EMMO_c130614a_2985_476d_a7ed_8a137847703c> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Interpreter
+###  https://w3id.org/emmo/emmo-for-humans#Interpreter
 :Interpreter rdf:type owl:Class ;
              rdfs:subClassOf :Semiotics .
 
 
-###  https://w3id.org/emmo/emmo-lite#JSONData
+###  https://w3id.org/emmo/emmo-for-humans#JSONData
 :JSONData rdf:type owl:Class ;
-          rdfs:subClassOf :SymbolicData .
+          rdfs:subClassOf :DiscreteData .
 
 
-###  https://w3id.org/emmo/emmo-lite#Liquid
+###  https://w3id.org/emmo/emmo-for-humans#Liquid
 :Liquid rdf:type owl:Class ;
         rdfs:subClassOf :CondensedMatter ,
                         :Fluid ;
-        skos:exactMatch <https://w3id.org/emmo#EMMO_7509da43_56b1_4d7f_887a_65d1663df4ba> .
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_7509da43_56b1_4d7f_887a_65d1663df4ba> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Material
+###  https://w3id.org/emmo/emmo-for-humans#Material
 :Material rdf:type owl:Class ;
           rdfs:subClassOf :Substance ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> .
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Matter
-:Matter rdf:type owl:Class ;
-        rdfs:subClassOf :PhysicalObject ;
-        skos:exactMatch <https://w3id.org/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Measurement
+###  https://w3id.org/emmo/emmo-for-humans#Measurement
 :Measurement rdf:type owl:Class ;
              rdfs:subClassOf :Semiosis .
 
 
-###  https://w3id.org/emmo/emmo-lite#Measurer
+###  https://w3id.org/emmo/emmo-for-humans#Measurer
 :Measurer rdf:type owl:Class ;
           rdfs:subClassOf :Interpreter .
 
 
-###  https://w3id.org/emmo/emmo-lite#MesoscopicSubstance
+###  https://w3id.org/emmo/emmo-for-humans#MesoscopicSubstance
 :MesoscopicSubstance rdf:type owl:Class ;
                      rdfs:subClassOf :Substance ;
-                     skos:exactMatch <https://w3id.org/emmo#EMMO_660a4964_0333_4663_bc66_e93ef59b0679> .
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_660a4964_0333_4663_bc66_e93ef59b0679> .
 
 
-###  https://w3id.org/emmo/emmo-lite#NumericData
-:NumericData rdf:type owl:Class ;
-             rdfs:subClassOf :SymbolicData ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_8b305b63_6fa3_44dd_9679_17eb8403a07a> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Object
+###  https://w3id.org/emmo/emmo-for-humans#Object
 :Object rdf:type owl:Class ;
         rdfs:subClassOf :Persistence ;
-        skos:exactMatch <https://w3id.org/emmo#EMMO_90ae56e4_d197_49b6_be1a_0049e4756606> .
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_90ae56e4_d197_49b6_be1a_0049e4756606> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Participant
+###  https://w3id.org/emmo/emmo-for-humans#Participant
 :Participant rdf:type owl:Class ;
              rdfs:subClassOf :Object ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_13191289_6c2b_4741_93e1_82d53bd0e703> .
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_13191289_6c2b_4741_93e1_82d53bd0e703> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Persistence
+###  https://w3id.org/emmo/emmo-for-humans#Persistence
 :Persistence rdf:type owl:Class ;
-             skos:exactMatch <https://w3id.org/emmo#EMMO_e04884d9_eda6_487e_93d5_7722d7eda96b> .
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e04884d9_eda6_487e_93d5_7722d7eda96b> .
 
 
-###  https://w3id.org/emmo/emmo-lite#PhysicalEntity
+###  https://w3id.org/emmo/emmo-for-humans#PhysicalEntity
 :PhysicalEntity rdf:type owl:Class ;
-                skos:exactMatch <https://w3id.org/emmo#EMMO_c5ddfdba_c074_4aa4_ad6b_1ac4942d300d> .
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_c5ddfdba_c074_4aa4_ad6b_1ac4942d300d> .
 
 
-###  https://w3id.org/emmo/emmo-lite#PhysicalObject
+###  https://w3id.org/emmo/emmo-for-humans#PhysicalObject
 :PhysicalObject rdf:type owl:Class ;
                 rdfs:subClassOf :PhysicalEntity ;
-                skos:exactMatch <https://w3id.org/emmo#EMMO_38b579de_4331_40e0_803d_09efa298e726> .
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_38b579de_4331_40e0_803d_09efa298e726> .
 
 
-###  https://w3id.org/emmo/emmo-lite#PhysicalParticle
+###  https://w3id.org/emmo/emmo-for-humans#PhysicalParticle
 :PhysicalParticle rdf:type owl:Class ;
                   rdfs:subClassOf :PhysicalObject ;
-                  skos:exactMatch <https://w3id.org/emmo#EMMO_a15cea10_9946_4d2b_95c5_cfc333fd2abb> .
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a15cea10_9946_4d2b_95c5_cfc333fd2abb> .
 
 
-###  https://w3id.org/emmo/emmo-lite#PhysicalPhenomenon
+###  https://w3id.org/emmo/emmo-for-humans#PhysicalPhenomenon
 :PhysicalPhenomenon rdf:type owl:Class ;
                     rdfs:subClassOf :PhysicalEntity ;
-                    skos:exactMatch <https://w3id.org/emmo#EMMO_5cc4e111_3eb1_44a3_9369_5af3846cf605> .
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_5cc4e111_3eb1_44a3_9369_5af3846cf605> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Plasma
+###  https://w3id.org/emmo/emmo-for-humans#Plasma
 :Plasma rdf:type owl:Class ;
         rdfs:subClassOf :Fluid ;
-        skos:exactMatch <https://w3id.org/emmo#EMMO_4c21fb86_fdcf_444e_b498_86fe656295af> .
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4c21fb86_fdcf_444e_b498_86fe656295af> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Process
+###  https://w3id.org/emmo/emmo-for-humans#Process
 :Process rdf:type owl:Class ;
          rdfs:subClassOf :Persistence ;
-         skos:exactMatch <https://w3id.org/emmo#EMMO_43e9a05d_98af_41b4_92f6_00f79a09bfce> .
+         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_43e9a05d_98af_41b4_92f6_00f79a09bfce> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Property
+###  https://w3id.org/emmo/emmo-for-humans#Property
 :Property rdf:type owl:Class ;
           rdfs:subClassOf :Sign ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_b7bcff25_ffc3_474e_9ab5_01b1664bd4ba> .
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b7bcff25_ffc3_474e_9ab5_01b1664bd4ba> .
 
 
-###  https://w3id.org/emmo/emmo-lite#RationalData
-:RationalData rdf:type owl:Class ;
-              rdfs:subClassOf :RealData ;
-              skos:exactMatch <https://w3id.org/emmo#EMMO_69ebb235_9c5e_443d_9a3b_7042b1005f1f> .
-
-
-###  https://w3id.org/emmo/emmo-lite#RealData
-:RealData rdf:type owl:Class ;
-          rdfs:subClassOf :NumericData ;
-          skos:exactMatch <https://w3id.org/emmo#EMMO_18d180e4_5e3e_42f7_820c_e08951223486> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Referent
+###  https://w3id.org/emmo/emmo-for-humans#Referent
 :Referent rdf:type owl:Class ;
           rdfs:subClassOf :Semiotics .
 
 
-###  https://w3id.org/emmo/emmo-lite#Role
+###  https://w3id.org/emmo/emmo-for-humans#Role
 :Role rdf:type owl:Class ;
       rdfs:subClassOf :Holistic ;
-      skos:exactMatch <https://w3id.org/emmo#EMMO_4f226cf3_6d02_4d35_8566_a9e641bc6ff3> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4f226cf3_6d02_4d35_8566_a9e641bc6ff3> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Sample
+###  https://w3id.org/emmo/emmo-for-humans#Sample
 :Sample rdf:type owl:Class ;
         rdfs:subClassOf :Referent .
 
 
-###  https://w3id.org/emmo/emmo-lite#ScalarData
-:ScalarData rdf:type owl:Class ;
-            rdfs:subClassOf :SymbolicData ;
-            skos:exactMatch <https://w3id.org/emmo#EMMO_dd8301d8_affa_4b1d_8db8_7b9d0a1f2ee7> .
-
-
-###  https://w3id.org/emmo/emmo-lite#Semiosis
+###  https://w3id.org/emmo/emmo-for-humans#Semiosis
 :Semiosis rdf:type owl:Class ;
           rdfs:subClassOf :Process ,
                           :Semiotics .
 
 
-###  https://w3id.org/emmo/emmo-lite#Semiotics
+###  https://w3id.org/emmo/emmo-for-humans#Semiotics
 :Semiotics rdf:type owl:Class ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_8bb6b688_812a_4cb9_b76c_d5a058928719> .
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_8bb6b688_812a_4cb9_b76c_d5a058928719> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Sign
+###  https://w3id.org/emmo/emmo-for-humans#Sign
 :Sign rdf:type owl:Class ;
       rdfs:subClassOf :Semiotics .
 
 
-###  https://w3id.org/emmo/emmo-lite#Solid
+###  https://w3id.org/emmo/emmo-for-humans#Solid
 :Solid rdf:type owl:Class ;
        rdfs:subClassOf :CondensedMatter ;
-       skos:exactMatch <https://w3id.org/emmo#EMMO_a2b006f2_bbfd_4dba_bcaa_3fca20cd6be1> .
+       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a2b006f2_bbfd_4dba_bcaa_3fca20cd6be1> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Stage
+###  https://w3id.org/emmo/emmo-for-humans#Stage
 :Stage rdf:type owl:Class ;
        rdfs:subClassOf :Process ;
-       skos:exactMatch <https://w3id.org/emmo#EMMO_a633c6f8_4269_4870_9b28_f5ca1783fd54> .
+       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a633c6f8_4269_4870_9b28_f5ca1783fd54> .
 
 
-###  https://w3id.org/emmo/emmo-lite#StateOfMatter
+###  https://w3id.org/emmo/emmo-for-humans#StateOfMatter
 :StateOfMatter rdf:type owl:Class ;
                rdfs:subClassOf :ContinuumSubstance ;
-               skos:exactMatch <https://w3id.org/emmo#EMMO_b9695e87_8261_412e_83cd_a86459426a28> .
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b9695e87_8261_412e_83cd_a86459426a28> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Status
+###  https://w3id.org/emmo/emmo-for-humans#Status
 :Status rdf:type owl:Class ;
         rdfs:subClassOf :Object ;
-        skos:exactMatch <https://w3id.org/emmo#EMMO_d9589ed2_5304_48b3_9795_11bf44e64e9b> .
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d9589ed2_5304_48b3_9795_11bf44e64e9b> .
 
 
-###  https://w3id.org/emmo/emmo-lite#StringData
-:StringData rdf:type owl:Class ;
-            rdfs:subClassOf :SymbolicData ;
-            skos:exactMatch <https://w3id.org/emmo#EMMO_5f334606_f67d_4f0e_acb9_eeb21cb10c66> .
-
-
-###  https://w3id.org/emmo/emmo-lite#SubObject
+###  https://w3id.org/emmo/emmo-for-humans#SubObject
 :SubObject rdf:type owl:Class ;
            rdfs:subClassOf :Object ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_2553c342_fc28_47d8_8e19_7a98fa08f150> .
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2553c342_fc28_47d8_8e19_7a98fa08f150> .
 
 
-###  https://w3id.org/emmo/emmo-lite#SubProcess
+###  https://w3id.org/emmo/emmo-for-humans#SubProcess
 :SubProcess rdf:type owl:Class ;
             rdfs:subClassOf :Process ;
-            skos:exactMatch <https://w3id.org/emmo#EMMO_49804605_c0fe_4538_abda_f70ba1dc8a5d> .
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_49804605_c0fe_4538_abda_f70ba1dc8a5d> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Substance
+###  https://w3id.org/emmo/emmo-for-humans#Substance
 :Substance rdf:type owl:Class ;
-           rdfs:subClassOf :Matter ;
-           skos:exactMatch <https://w3id.org/emmo#EMMO_bc37743c_37c4_4ec7_9d58_d1aae5567352> .
+           rdfs:subClassOf :PhysicalObject ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_bc37743c_37c4_4ec7_9d58_d1aae5567352> .
 
 
-###  https://w3id.org/emmo/emmo-lite#Suspension
+###  https://w3id.org/emmo/emmo-for-humans#Suspension
 :Suspension rdf:type owl:Class ;
             rdfs:subClassOf :StateOfMatter ;
-            skos:exactMatch <https://w3id.org/emmo#EMMO_4a464c8d_8895_44a8_a628_aed13509f1bd> .
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4a464c8d_8895_44a8_a628_aed13509f1bd> .
 
 
-###  https://w3id.org/emmo/emmo-lite#SymbolicData
-:SymbolicData rdf:type owl:Class ;
-              rdfs:subClassOf :DiscreteData ;
-              skos:exactMatch <https://w3id.org/emmo#EMMO_70bbb94e_2ca7_4d73_ba01_6397f134d172> .
-
-
-###  https://w3id.org/emmo/emmo-lite#System
+###  https://w3id.org/emmo/emmo-for-humans#System
 :System rdf:type owl:Class ;
         rdfs:subClassOf :Object ,
                         :Whole ;
-        skos:exactMatch <https://w3id.org/emmo#EMMO_65a007dc_2550_46b0_b394_3346c67fbb69> .
+        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_65a007dc_2550_46b0_b394_3346c67fbb69> .
 
 
-###  https://w3id.org/emmo/emmo-lite#URI
-:URI rdf:type owl:Class ;
-     rdfs:subClassOf :SymbolicData .
-
-
-###  https://w3id.org/emmo/emmo-lite#URL
-:URL rdf:type owl:Class ;
-     rdfs:subClassOf :URI .
-
-
-###  https://w3id.org/emmo/emmo-lite#URN
-:URN rdf:type owl:Class ;
-     rdfs:subClassOf :URI .
-
-
-###  https://w3id.org/emmo/emmo-lite#Whole
+###  https://w3id.org/emmo/emmo-for-humans#Whole
 :Whole rdf:type owl:Class ;
        rdfs:subClassOf :Holistic ;
-       skos:exactMatch <https://w3id.org/emmo#EMMO_1efe8b96_e006_4a33_bc9a_421406cbb9f0> .
-
-
-#################################################################
-#    General axioms
-#################################################################
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom xsd:boolean ;
-  rdfs:subClassOf :BooleanData
-] .
-
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom xsd:dateTime ;
-  rdfs:subClassOf :DateTimeData
-] .
-
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom xsd:decimal ;
-  rdfs:subClassOf :DecimalData
-] .
-
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom xsd:double ;
-  rdfs:subClassOf :DoubleData
-] .
-
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom xsd:float ;
-  rdfs:subClassOf :FloatData
-] .
-
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom xsd:integer ;
-  rdfs:subClassOf :IntegerData
-] .
-
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom xsd:string ;
-  rdfs:subClassOf :StringData
-] .
-
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom owl:rational ;
-  rdfs:subClassOf :RationalData
-] .
-
-
-[ rdf:type owl:Restriction ;
-  owl:onProperty :dataValue ;
-  owl:someValuesFrom owl:real ;
-  rdfs:subClassOf :RealData
-] .
+       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_1efe8b96_e006_4a33_bc9a_421406cbb9f0> .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
