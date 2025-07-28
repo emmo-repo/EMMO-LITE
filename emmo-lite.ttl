@@ -112,7 +112,7 @@ DatatypeProperty"""@en ;
               rdfs:subPropertyOf :hasProperPart ;
               owl:inverseOf :isBehaviourOf ;
               rdfs:domain :Object ;
-              rdfs:range :Behaviour .
+              rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#hasComponent
@@ -129,7 +129,7 @@ DatatypeProperty"""@en ;
                 rdfs:subPropertyOf :hasProperPart ;
                 owl:inverseOf :isConstituentOf ;
                 rdfs:domain :Object ;
-                rdfs:range :Constituent .
+                rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#hasConstitutiveProcess
@@ -137,7 +137,7 @@ DatatypeProperty"""@en ;
                         rdfs:subPropertyOf :hasProperPart ;
                         owl:inverseOf :isConstitutiveProcessOf ;
                         rdfs:domain :Object ;
-                        rdfs:range :ConstitutiveProcess .
+                        rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#hasDatum
@@ -193,7 +193,7 @@ DatatypeProperty"""@en ;
                 rdfs:subPropertyOf :hasProperPart ;
                 owl:inverseOf :isParticipantOf ;
                 rdfs:domain :Process ;
-                rdfs:range :Participant .
+                rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#hasProperPart
@@ -234,7 +234,7 @@ DatatypeProperty"""@en ;
           rdfs:subPropertyOf :hasProperPart ;
           owl:inverseOf :isStageOf ;
           rdfs:domain :Process ;
-          rdfs:range :Stage .
+          rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#hasStatus
@@ -242,7 +242,7 @@ DatatypeProperty"""@en ;
            rdfs:subPropertyOf :hasProperPart ;
            owl:inverseOf :isStatusOf ;
            rdfs:domain :Process ;
-           rdfs:range :Status .
+           rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#hasSubObject
@@ -250,7 +250,7 @@ DatatypeProperty"""@en ;
               rdfs:subPropertyOf :hasProperPart ;
               owl:inverseOf :isSubObjectOf ;
               rdfs:domain :Object ;
-              rdfs:range :SubObject .
+              rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#hasSubProcess
@@ -258,7 +258,7 @@ DatatypeProperty"""@en ;
                rdfs:subPropertyOf :hasProperPart ;
                owl:inverseOf :isSubProcessOf ;
                rdfs:domain :Process ;
-               rdfs:range :SubProcess .
+               rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#interprets
@@ -295,7 +295,7 @@ DatatypeProperty"""@en ;
 ###  https://w3id.org/emmo/emmo-for-humans#isBehaviourOf
 :isBehaviourOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :isProperPartOf ;
-               rdfs:domain :Behaviour ;
+               rdfs:domain :Process ;
                rdfs:range :Object .
 
 
@@ -324,14 +324,14 @@ DatatypeProperty"""@en ;
 ###  https://w3id.org/emmo/emmo-for-humans#isConstituentOf
 :isConstituentOf rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isProperPartOf ;
-                 rdfs:domain :Constituent ;
+                 rdfs:domain :Object ;
                  rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#isConstitutiveProcessOf
 :isConstitutiveProcessOf rdf:type owl:ObjectProperty ;
                          rdfs:subPropertyOf :isProperPartOf ;
-                         rdfs:domain :ConstitutiveProcess ;
+                         rdfs:domain :Process ;
                          rdfs:range :Object .
 
 
@@ -431,7 +431,7 @@ DatatypeProperty"""@en ;
 ###  https://w3id.org/emmo/emmo-for-humans#isParticipantOf
 :isParticipantOf rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :isProperPartOf ;
-                 rdfs:domain :Participant ;
+                 rdfs:domain :Object ;
                  rdfs:range :Process .
 
 
@@ -487,28 +487,28 @@ DatatypeProperty"""@en ;
 ###  https://w3id.org/emmo/emmo-for-humans#isStageOf
 :isStageOf rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :isProperPartOf ;
-           rdfs:domain :Stage ;
+           rdfs:domain :Process ;
            rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#isStatusOf
 :isStatusOf rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :isProperPartOf ;
-            rdfs:domain :Status ;
+            rdfs:domain :Object ;
             rdfs:range :Process .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#isSubObjectOf
 :isSubObjectOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :isProperPartOf ;
-               rdfs:domain :SubObject ;
+               rdfs:domain :Object ;
                rdfs:range :Object .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#isSubProcessOf
 :isSubProcessOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isProperPartOf ;
-                rdfs:domain :SubProcess ;
+                rdfs:domain :Process ;
                 rdfs:range :Process .
 
 
@@ -627,7 +627,7 @@ Units must be written according to  section 5.2 SI Brochure rules: https://www.b
 
 ###  https://w3id.org/emmo/emmo-for-humans#Agent
 :Agent rdf:type owl:Class ;
-       rdfs:subClassOf :Participant ,
+       rdfs:subClassOf :Object ,
                        :Role ;
        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2480b72b_db8d_460f_9a5f_c2912f979046> .
 
@@ -644,12 +644,6 @@ Units must be written according to  section 5.2 SI Brochure rules: https://www.b
            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9e49caad_b29e_4cf1_9be4_80419fd1e45c> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Behaviour
-:Behaviour rdf:type owl:Class ;
-           rdfs:subClassOf :Process ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_210e7e99_c1cf_44cc_87c7_310a10ff068b> .
-
-
 ###  https://w3id.org/emmo/emmo-for-humans#Characterisation
 :Characterisation rdf:type owl:Class ;
                   rdfs:subClassOf :Measurement .
@@ -657,7 +651,7 @@ Units must be written according to  section 5.2 SI Brochure rules: https://www.b
 
 ###  https://w3id.org/emmo/emmo-for-humans#Component
 :Component rdf:type owl:Class ;
-           rdfs:subClassOf :Constituent ,
+           rdfs:subClassOf :Object ,
                            :Role ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :isConstituentOf ;
@@ -670,18 +664,6 @@ Units must be written according to  section 5.2 SI Brochure rules: https://www.b
 :CondensedMatter rdf:type owl:Class ;
                  rdfs:subClassOf :StateOfMatter ;
                  <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_220b7201_d277_4dca_bf6a_5a5e2c4062dd> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#Constituent
-:Constituent rdf:type owl:Class ;
-             rdfs:subClassOf :Object ;
-             <http://www.w3.org/2004/02/skos/core#exactMatch> "https://w3id.org/emmo#EMMO_ceaaf9f7_fd11_424b_8fda_9afa186af186"^^xsd:anyURI .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#ConstitutiveProcess
-:ConstitutiveProcess rdf:type owl:Class ;
-                     rdfs:subClassOf :Process ;
-                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f68858dd_64f4_4877_b7fb_70d04fbe5bab> .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#ContinuumSubstance
@@ -798,12 +780,6 @@ Units must be written according to  section 5.2 SI Brochure rules: https://www.b
         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_90ae56e4_d197_49b6_be1a_0049e4756606> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Participant
-:Participant rdf:type owl:Class ;
-             rdfs:subClassOf :Object ;
-             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_13191289_6c2b_4741_93e1_82d53bd0e703> .
-
-
 ###  https://w3id.org/emmo/emmo-for-humans#Persistence
 :Persistence rdf:type owl:Class ;
              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e04884d9_eda6_487e_93d5_7722d7eda96b> .
@@ -888,34 +864,10 @@ Units must be written according to  section 5.2 SI Brochure rules: https://www.b
        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a2b006f2_bbfd_4dba_bcaa_3fca20cd6be1> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Stage
-:Stage rdf:type owl:Class ;
-       rdfs:subClassOf :Process ;
-       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a633c6f8_4269_4870_9b28_f5ca1783fd54> .
-
-
 ###  https://w3id.org/emmo/emmo-for-humans#StateOfMatter
 :StateOfMatter rdf:type owl:Class ;
                rdfs:subClassOf :ContinuumSubstance ;
                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b9695e87_8261_412e_83cd_a86459426a28> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#Status
-:Status rdf:type owl:Class ;
-        rdfs:subClassOf :Object ;
-        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d9589ed2_5304_48b3_9795_11bf44e64e9b> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#SubObject
-:SubObject rdf:type owl:Class ;
-           rdfs:subClassOf :Object ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2553c342_fc28_47d8_8e19_7a98fa08f150> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#SubProcess
-:SubProcess rdf:type owl:Class ;
-            rdfs:subClassOf :Process ;
-            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_49804605_c0fe_4538_abda_f70ba1dc8a5d> .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#Substance
