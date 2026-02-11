@@ -7,17 +7,17 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <https://w3id.org/emmo/elite#> .
 
-<https://w3id.org/emmo/elite> rdf:type owl:Ontology ;
-                               owl:versionIRI <https://w3id.org/emmo/elite/0.0.6> ;
-                               <http://purl.org/dc/terms/abstract> "A collection of all the EMMO reference level ontology modules"@en ,
-                                                                   """A lightweight version of the EMMO, exposing the most common classes and relations for practical use in the development of application ontologies, using human-readable IRIs.
+<https://w3id.org/emmo/elite/elite> rdf:type owl:Ontology ;
+                                     owl:versionIRI <https://w3id.org/emmo/elite/elite/0.0.7> ;
+                                     <http://purl.org/dc/terms/abstract> "A collection of all the EMMO reference level ontology modules"@en ,
+                                                                         """A lightweight version of the EMMO, exposing the most common classes and relations for practical use in the development of application ontologies, using human-readable IRIs.
 EMMO-LITE expressivity is limited to RDFS+ for increased portability.
 Each EMMO-LITE ontology entity provides a reference to the EMMO entity using skos:exactMatch for mapping purposes."""@en ;
-                               <http://purl.org/dc/terms/creator> "Emanuele Ghedini"@en ;
-                               <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/legalcode" ;
-                               <http://purl.org/dc/terms/publisher> <https://emmc.eu> ;
-                               <http://purl.org/dc/terms/title> "EMMO-LITE"@en ;
-                               rdfs:comment """EMMO-LITE is a subset of classes, properties and axioms of EMMO for Humans.
+                                     <http://purl.org/dc/terms/creator> "Emanuele Ghedini"@en ;
+                                     <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/legalcode" ;
+                                     <http://purl.org/dc/terms/publisher> <https://emmc.eu> ;
+                                     <http://purl.org/dc/terms/title> "EMMO-LITE"@en ;
+                                     rdfs:comment """EMMO-LITE is a subset of classes, properties and axioms of EMMO for Humans.
 
 EMMO-LITE is designed for RDFS+ reasoning, using the following constructs:
 rdfs:subClassOf
@@ -37,7 +37,7 @@ InverseFunctionalProperty
 ObjectProperty
 DatatypeProperty
 AnnotationProperty"""@en ;
-                               owl:versionInfo "0.0.6"@en .
+                                     owl:versionInfo "0.0.7"@en .
 
 #################################################################
 #    Annotation properties
